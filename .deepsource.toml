@@ -1,0 +1,26 @@
+version = 1
+
+[[analyzers]]
+name = "shell"
+
+[[analyzers]]
+name = "rust"
+
+  [analyzers.meta]
+  msrv = "stable"
+
+[[analyzers]]
+name = "go"
+
+  [analyzers.meta]
+  import_root = "github.com/philipjonsen/nitro"
+  dependencies_vendored = true
+
+[[transformers]]
+name = "gofumpt"
+
+[[transformers]]
+name = "gofmt"
+
+[[transformers]]
+name = "rustfmt"
