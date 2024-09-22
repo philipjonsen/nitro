@@ -29,9 +29,7 @@ type ArbOwner struct {
 	OwnerActsGasCost func(bytes4, addr, []byte) (uint64, error)
 }
 
-var (
-	ErrOutOfBounds = errors.New("value out of bounds")
-)
+var ErrOutOfBounds = errors.New("value out of bounds")
 
 // AddChainOwner adds account as a chain owner
 func (con ArbOwner) AddChainOwner(c ctx, evm mech, newOwner addr) error {

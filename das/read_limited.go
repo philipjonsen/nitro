@@ -38,7 +38,6 @@ func (s *readLimitedStorageService) Close(ctx context.Context) error {
 
 func (s *readLimitedStorageService) String() string {
 	return fmt.Sprintf("readLimitedStorageService(%v)", s.DASReader)
-
 }
 
 type readLimitedDataAvailabilityService struct {

@@ -11,5 +11,4 @@ import (
 func CanonicalizeMetricName(metric string) string {
 	invalidPromCharRegex := regexp.MustCompile(`[^a-zA-Z0-9:_]+`)
 	return invalidPromCharRegex.ReplaceAllString(metric, "_")
-
 }

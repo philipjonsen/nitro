@@ -172,8 +172,10 @@ type cgroupsMemoryFiles struct {
 	activeRe, inactiveRe            *regexp.Regexp
 }
 
-const defaultCgroupsV1MemoryDirectory = "/sys/fs/cgroup/memory/"
-const defaultCgroupsV2MemoryDirectory = "/sys/fs/cgroup/"
+const (
+	defaultCgroupsV1MemoryDirectory = "/sys/fs/cgroup/memory/"
+	defaultCgroupsV2MemoryDirectory = "/sys/fs/cgroup/"
+)
 
 var cgroupsV1MemoryFiles = cgroupsMemoryFiles{
 	limitFile:  defaultCgroupsV1MemoryDirectory + "/memory.limit_in_bytes",
@@ -182,6 +184,7 @@ var cgroupsV1MemoryFiles = cgroupsMemoryFiles{
 	activeRe:   regexp.MustCompile(`^total_active_file (\d+)`),
 	inactiveRe: regexp.MustCompile(`^total_inactive_file (\d+)`),
 }
+
 var cgroupsV2MemoryFiles = cgroupsMemoryFiles{
 	limitFile:  defaultCgroupsV2MemoryDirectory + "/memory.max",
 	usageFile:  defaultCgroupsV2MemoryDirectory + "/memory.current",

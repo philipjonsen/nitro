@@ -121,5 +121,4 @@ func TestDatabaseConversion(t *testing.T) {
 	Require(t, err)
 	_, err = builder.L2.EnsureTxSucceeded(tx)
 	Require(t, err)
-
 }

@@ -90,7 +90,6 @@ func (b *backlog) backlogSizeInBytes() (uint64, error) {
 // that segment reaches its limit. If messages remain to be added a new segment
 // will be created.
 func (b *backlog) Append(bm *m.BroadcastMessage) error {
-
 	if bm.ConfirmedSequenceNumberMessage != nil {
 		b.delete(uint64(bm.ConfirmedSequenceNumberMessage.SequenceNumber))
 		size, err := b.backlogSizeInBytes()

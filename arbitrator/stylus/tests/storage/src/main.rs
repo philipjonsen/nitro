@@ -6,7 +6,7 @@
 use stylus_sdk::{
     alloy_primitives::B256,
     console,
-    storage::{StorageCache, GlobalStorage},
+    storage::{GlobalStorage, StorageCache},
     stylus_proc::entrypoint,
 };
 
@@ -38,11 +38,11 @@ fn user_main(input: Vec<u8>) -> Result<Vec<u8>, Vec<u8>> {
             let mut data = [0; 32];
             transient_load_bytes32(slot.as_ptr(), data.as_mut_ptr());
             data.into()
-        }
+        },
         _ => unsafe {
             let data = B256::try_from(&input[33..]).unwrap();
             transient_store_bytes32(slot.as_ptr(), data.as_ptr());
             vec![]
-        }
+        },
     })
 }

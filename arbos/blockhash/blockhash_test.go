@@ -84,7 +84,6 @@ func TestBlockhash(t *testing.T) {
 	if err == nil {
 		Fail(t, "old blockhash should give error")
 	}
-
 }
 
 func Require(t *testing.T, err error, printables ...interface{}) {

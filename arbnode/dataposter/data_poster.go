@@ -465,8 +465,10 @@ func (p *DataPoster) GetNextNonceAndMeta(ctx context.Context) (uint64, []byte, e
 	return nonce, meta, err
 }
 
-const minNonBlobRbfIncrease = arbmath.OneInBips * 11 / 10
-const minBlobRbfIncrease = arbmath.OneInBips * 2
+const (
+	minNonBlobRbfIncrease = arbmath.OneInBips * 11 / 10
+	minBlobRbfIncrease    = arbmath.OneInBips * 2
+)
 
 // evalMaxFeeCapExpr uses MaxFeeCapFormula from config to calculate the expression's result by plugging in appropriate parameter values
 // backlogOfBatches should already include extraBacklog

@@ -198,7 +198,6 @@ func (l *Simple) Release(ctx context.Context) {
 		}
 		return nil
 	}, config.Key)
-
 	if err != nil {
 		log.Error("release returned error", "err", err)
 	}

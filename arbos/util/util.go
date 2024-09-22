@@ -19,16 +19,18 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-var AddressAliasOffset *big.Int
-var InverseAddressAliasOffset *big.Int
-var ParseRedeemScheduledLog func(*types.Log) (*pgen.ArbRetryableTxRedeemScheduled, error)
-var ParseL2ToL1TransactionLog func(*types.Log) (*pgen.ArbSysL2ToL1Transaction, error)
-var ParseL2ToL1TxLog func(*types.Log) (*pgen.ArbSysL2ToL1Tx, error)
-var PackInternalTxDataStartBlock func(...interface{}) ([]byte, error)
-var UnpackInternalTxDataStartBlock func([]byte) (map[string]interface{}, error)
-var PackInternalTxDataBatchPostingReport func(...interface{}) ([]byte, error)
-var UnpackInternalTxDataBatchPostingReport func([]byte) (map[string]interface{}, error)
-var PackArbRetryableTxRedeem func(...interface{}) ([]byte, error)
+var (
+	AddressAliasOffset                     *big.Int
+	InverseAddressAliasOffset              *big.Int
+	ParseRedeemScheduledLog                func(*types.Log) (*pgen.ArbRetryableTxRedeemScheduled, error)
+	ParseL2ToL1TransactionLog              func(*types.Log) (*pgen.ArbSysL2ToL1Transaction, error)
+	ParseL2ToL1TxLog                       func(*types.Log) (*pgen.ArbSysL2ToL1Tx, error)
+	PackInternalTxDataStartBlock           func(...interface{}) ([]byte, error)
+	UnpackInternalTxDataStartBlock         func([]byte) (map[string]interface{}, error)
+	PackInternalTxDataBatchPostingReport   func(...interface{}) ([]byte, error)
+	UnpackInternalTxDataBatchPostingReport func([]byte) (map[string]interface{}, error)
+	PackArbRetryableTxRedeem               func(...interface{}) ([]byte, error)
+)
 
 func init() {
 	offset, success := new(big.Int).SetString("0x1111000000000000000000000000000000001111", 0)

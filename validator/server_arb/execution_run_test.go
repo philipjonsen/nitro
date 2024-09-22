@@ -41,21 +41,26 @@ func (m *mockMachine) CloneMachineInterface() MachineInterface {
 		totalSteps: m.totalSteps,
 	}
 }
+
 func (m *mockMachine) GetStepCount() uint64 {
 	return 0
 }
+
 func (m *mockMachine) IsRunning() bool {
 	return m.gs.PosInBatch < m.totalSteps-1
 }
+
 func (m *mockMachine) ValidForStep(uint64) bool {
 	return true
 }
+
 func (m *mockMachine) Status() uint8 {
 	if m.gs.PosInBatch == m.totalSteps-1 {
 		return uint8(validator.MachineStatusFinished)
 	}
 	return uint8(validator.MachineStatusRunning)
 }
+
 func (m *mockMachine) ProveNextStep() []byte {
 	return nil
 }

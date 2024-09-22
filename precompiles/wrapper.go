@@ -35,7 +35,6 @@ func (wrapper *DebugPrecompile) Call(
 	gasSupplied uint64,
 	evm *vm.EVM,
 ) ([]byte, uint64, error) {
-
 	debugMode := evm.ChainConfig().DebugMode()
 
 	if debugMode {
@@ -96,7 +95,6 @@ func (wrapper *OwnerPrecompile) Call(
 	}
 
 	output, _, err := con.Call(input, precompileAddress, actingAsAddress, caller, value, readOnly, gasSupplied, evm)
-
 	if err != nil {
 		return output, gasSupplied, err // we don't deduct gas since we don't want to charge the owner
 	}

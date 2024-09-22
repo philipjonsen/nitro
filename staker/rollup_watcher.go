@@ -23,9 +23,11 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 )
 
-var rollupInitializedID common.Hash
-var nodeCreatedID common.Hash
-var challengeCreatedID common.Hash
+var (
+	rollupInitializedID common.Hash
+	nodeCreatedID       common.Hash
+	challengeCreatedID  common.Hash
+)
 
 func init() {
 	parsedRollup, err := rollupgen.RollupUserLogicMetaData.GetAbi()
@@ -102,7 +104,7 @@ func (r *RollupWatcher) Initialize(ctx context.Context) error {
 }
 
 func (r *RollupWatcher) LookupCreation(ctx context.Context) (*rollupgen.RollupUserLogicRollupInitialized, error) {
-	var query = ethereum.FilterQuery{
+	query := ethereum.FilterQuery{
 		FromBlock: r.fromBlock,
 		ToBlock:   r.fromBlock,
 		Addresses: []common.Address{r.address},
@@ -129,7 +131,7 @@ func (r *RollupWatcher) LookupNode(ctx context.Context, number uint64) (*NodeInf
 	}
 	var numberAsHash common.Hash
 	binary.BigEndian.PutUint64(numberAsHash[(32-8):], number)
-	var query = ethereum.FilterQuery{
+	query := ethereum.FilterQuery{
 		FromBlock: createdAtBlock,
 		ToBlock:   createdAtBlock,
 		Addresses: []common.Address{r.address},
@@ -177,7 +179,7 @@ func (r *RollupWatcher) LookupNodeChildren(ctx context.Context, nodeNum uint64, 
 	if node.NodeHash != nodeHash {
 		return nil, fmt.Errorf("got unexpected node hash %v looking for node number %v with expected hash %v (reorg?)", node.NodeHash, nodeNum, nodeHash)
 	}
-	var query = ethereum.FilterQuery{
+	query := ethereum.FilterQuery{
 		Addresses: []common.Address{r.address},
 		Topics:    [][]common.Hash{{nodeCreatedID}, nil, {nodeHash}},
 	}

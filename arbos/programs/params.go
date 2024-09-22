@@ -15,26 +15,30 @@ import (
 	am "github.com/offchainlabs/nitro/util/arbmath"
 )
 
-const MaxWasmSize = 128 * 1024      // max decompressed wasm size (programs are also bounded by compressed size)
-const initialStackDepth = 4 * 65536 // 4 page stack.
-const InitialFreePages = 2          // 2 pages come free (per tx).
-const InitialPageGas = 1000         // linear cost per allocation.
-const initialPageRamp = 620674314   // targets 8MB costing 32 million gas, minus the linear term.
-const initialPageLimit = 128        // reject wasms with memories larger than 8MB.
-const initialInkPrice = 10000       // 1 evm gas buys 10k ink.
-const initialMinInitGas = 72        // charge 72 * 128 = 9216 gas.
-const initialMinCachedGas = 11      // charge 11 *  32 = 352 gas.
-const initialInitCostScalar = 50    // scale costs 1:1 (100%)
-const initialCachedCostScalar = 50  // scale costs 1:1 (100%)
-const initialExpiryDays = 365       // deactivate after 1 year.
-const initialKeepaliveDays = 31     // wait a month before allowing reactivation.
-const initialRecentCacheSize = 32   // cache the 32 most recent programs.
+const (
+	MaxWasmSize             = 128 * 1024 // max decompressed wasm size (programs are also bounded by compressed size)
+	initialStackDepth       = 4 * 65536  // 4 page stack.
+	InitialFreePages        = 2          // 2 pages come free (per tx).
+	InitialPageGas          = 1000       // linear cost per allocation.
+	initialPageRamp         = 620674314  // targets 8MB costing 32 million gas, minus the linear term.
+	initialPageLimit        = 128        // reject wasms with memories larger than 8MB.
+	initialInkPrice         = 10000      // 1 evm gas buys 10k ink.
+	initialMinInitGas       = 72         // charge 72 * 128 = 9216 gas.
+	initialMinCachedGas     = 11         // charge 11 *  32 = 352 gas.
+	initialInitCostScalar   = 50         // scale costs 1:1 (100%)
+	initialCachedCostScalar = 50         // scale costs 1:1 (100%)
+	initialExpiryDays       = 365        // deactivate after 1 year.
+	initialKeepaliveDays    = 31         // wait a month before allowing reactivation.
+	initialRecentCacheSize  = 32         // cache the 32 most recent programs.
+)
 
 const v2MinInitGas = 69 // charge 69 * 128 = 8832 gas (minCachedGas will also be charged in v2).
 
-const MinCachedGasUnits = 32 /// 32 gas for each unit
-const MinInitGasUnits = 128  // 128 gas for each unit
-const CostScalarPercent = 2  // 2% for each unit
+const (
+	MinCachedGasUnits = 32  /// 32 gas for each unit
+	MinInitGasUnits   = 128 // 128 gas for each unit
+	CostScalarPercent = 2   // 2% for each unit
+)
 
 // This struct exists to collect the many Stylus configuration parameters into a single word.
 // The items here must only be modified in ArbOwner precompile methods (or in ArbOS upgrades).

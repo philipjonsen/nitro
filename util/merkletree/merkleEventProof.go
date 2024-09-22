@@ -54,7 +54,6 @@ func NewMerkleTreeFromEvents(
 func NewNonPersistentMerkleAccumulatorFromEvents(
 	events []merkleAccumulator.MerkleTreeNodeEvent,
 ) (*merkleAccumulator.MerkleAccumulator, error) {
-
 	partials := make([]*common.Hash, len(events))
 	zero := common.Hash{}
 	for i := range partials {

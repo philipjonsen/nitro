@@ -21,10 +21,12 @@ import (
 	"github.com/offchainlabs/nitro/solgen/go/bridgegen"
 )
 
-var sequencerBridgeABI *abi.ABI
-var batchDeliveredID common.Hash
-var addSequencerL2BatchFromOriginCallABI abi.Method
-var sequencerBatchDataABI abi.Event
+var (
+	sequencerBridgeABI                   *abi.ABI
+	batchDeliveredID                     common.Hash
+	addSequencerL2BatchFromOriginCallABI abi.Method
+	sequencerBatchDataABI                abi.Event
+)
 
 const sequencerBatchDataEvent = "SequencerBatchData"
 

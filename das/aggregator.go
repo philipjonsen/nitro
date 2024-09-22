@@ -28,13 +28,11 @@ import (
 
 const metricBase string = "arb/das/rpc/aggregator/store"
 
-var (
-	// This metric shows 1 if there was any error posting to the backends, until
-	// there was a Store that had no backend failures.
-	anyErrorGauge = metrics.GetOrRegisterGauge(metricBase+"/error/gauge", nil)
+// This metric shows 1 if there was any error posting to the backends, until
+// there was a Store that had no backend failures.
+var anyErrorGauge = metrics.GetOrRegisterGauge(metricBase+"/error/gauge", nil)
 
 // Other aggregator metrics are generated dynamically in the Store function.
-)
 
 type AggregatorConfig struct {
 	Enable                bool              `koanf:"enable"`
@@ -129,7 +127,6 @@ func NewAggregatorWithSeqInboxCaller(
 	services []ServiceDetails,
 	seqInboxCaller *bridgegen.SequencerInboxCaller,
 ) (*Aggregator, error) {
-
 	// #nosec G115
 	keysetHash, keysetBytes, err := KeysetHashFromServices(services, uint64(config.RPCAggregator.AssumedHonest))
 	if err != nil {
@@ -185,7 +182,7 @@ func (a *Aggregator) Store(ctx context.Context, message []byte, timeout uint64) 
 	for _, d := range a.services {
 		go func(ctx context.Context, d ServiceDetails) {
 			storeCtx, cancel := context.WithTimeout(ctx, a.requestTimeout)
-			var metricWithServiceName = metricBase + "/" + d.metricName
+			metricWithServiceName := metricBase + "/" + d.metricName
 			defer cancel()
 			incFailureMetric := func() {
 				metrics.GetOrRegisterCounter(metricWithServiceName+"/error/total", nil).Inc(1)

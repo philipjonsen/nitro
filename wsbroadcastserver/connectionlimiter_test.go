@@ -151,7 +151,6 @@ func TestIpv6Masks(t *testing.T) {
 	Expect(t, !l.Register(ip8)) // 1:2:4:6/64 2*, 1:2:4/48 4
 	Expect(t, l.Register(ip9))  // 1:2:4:7/64 1, 1:2:4/48 5
 	Expect(t, !l.Register(ip9)) // 1:2:4:7/64 1, 1:2:4/48 5
-
 }
 
 func TestPrivateAddresses(t *testing.T) {

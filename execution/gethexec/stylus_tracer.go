@@ -193,6 +193,7 @@ func (t *stylusTracer) CaptureStart(env *vm.EVM, from common.Address, to common.
 func (t *stylusTracer) CaptureEnd(output []byte, gasUsed uint64, err error) {}
 func (t *stylusTracer) CaptureState(pc uint64, op vm.OpCode, gas, cost uint64, scope *vm.ScopeContext, rData []byte, depth int, err error) {
 }
+
 func (t *stylusTracer) CaptureFault(pc uint64, op vm.OpCode, gas, cost uint64, _ *vm.ScopeContext, depth int, err error) {
 }
 func (t *stylusTracer) CaptureTxStart(gasLimit uint64) {}

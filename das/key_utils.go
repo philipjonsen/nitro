@@ -44,8 +44,10 @@ func DecodeBase64BLSPrivateKey(privKeyEncodedBytes []byte) (blsSignatures.Privat
 	return privKey, nil
 }
 
-const DefaultPubKeyFilename = "das_bls.pub"
-const DefaultPrivKeyFilename = "das_bls"
+const (
+	DefaultPubKeyFilename  = "das_bls.pub"
+	DefaultPrivKeyFilename = "das_bls"
+)
 
 func GenerateAndStoreKeys(keyDir string) (*blsSignatures.PublicKey, *blsSignatures.PrivateKey, error) {
 	pubKey, privKey, err := blsSignatures.GenerateKeys()

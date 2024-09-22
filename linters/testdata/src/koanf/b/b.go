@@ -38,6 +38,7 @@ func (c *GrandChildCfg) Do() {
 func configPtr() *ChildCfg {
 	return nil
 }
+
 func config() ChildCfg {
 	return ChildCfg{}
 }
@@ -48,5 +49,4 @@ func init() {
 	_ = defaultCfg.child.C
 	// Covers usage of grandChild.
 	defaultCfg.grandChild.Do()
-
 }

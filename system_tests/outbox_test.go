@@ -125,7 +125,6 @@ func TestOutboxProofs(t *testing.T) {
 		}
 
 		for _, log := range receipt.Logs {
-
 			if log.Topics[0] == withdrawTopic {
 				parsedLog, err := arbSys.ParseL2ToL1Tx(*log)
 				Require(t, err, "Failed to parse log")

@@ -17,13 +17,15 @@ import (
 	"github.com/offchainlabs/nitro/arbos/util"
 )
 
-type addr = common.Address
-type mech = *vm.EVM
-type huge = *big.Int
-type hash = common.Hash
-type bytes4 = [4]byte
-type bytes32 = [32]byte
-type ctx = *Context
+type (
+	addr    = common.Address
+	mech    = *vm.EVM
+	huge    = *big.Int
+	hash    = common.Hash
+	bytes4  = [4]byte
+	bytes32 = [32]byte
+	ctx     = *Context
+)
 
 type Context struct {
 	caller      addr

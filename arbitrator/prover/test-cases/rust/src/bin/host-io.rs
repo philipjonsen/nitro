@@ -99,7 +99,7 @@ fn main() {
             scalar %= &bls_modulus;
             let scalar_bytes = scalar.to_bytes_be();
             let mut expected_hash = [0u8; 32];
-            expected_hash[32-scalar_bytes.len()..].copy_from_slice(&scalar_bytes);
+            expected_hash[32 - scalar_bytes.len()..].copy_from_slice(&scalar_bytes);
             assert_eq!(bytebuffer.0, expected_hash);
         }
     }

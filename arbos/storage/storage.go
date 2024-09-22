@@ -54,15 +54,19 @@ type Storage struct {
 	hashCache  *lru.Cache[string, []byte]
 }
 
-const StorageReadCost = params.SloadGasEIP2200
-const StorageWriteCost = params.SstoreSetGasEIP2200
-const StorageWriteZeroCost = params.SstoreResetGasEIP2200
-const StorageCodeHashCost = params.ColdAccountAccessCostEIP2929
+const (
+	StorageReadCost      = params.SloadGasEIP2200
+	StorageWriteCost     = params.SstoreSetGasEIP2200
+	StorageWriteZeroCost = params.SstoreResetGasEIP2200
+	StorageCodeHashCost  = params.ColdAccountAccessCostEIP2929
+)
 
 const storageKeyCacheSize = 1024
 
-var storageHashCache = lru.NewCache[string, []byte](storageKeyCacheSize)
-var cacheFullLogged atomic.Bool
+var (
+	storageHashCache = lru.NewCache[string, []byte](storageKeyCacheSize)
+	cacheFullLogged  atomic.Bool
+)
 
 // NewGeth uses a Geth database to create an evm key-value store
 func NewGeth(statedb vm.StateDB, burner burn.Burner) *Storage {
@@ -217,6 +221,7 @@ func (s *Storage) OpenCachedSubStorage(id []byte) *Storage {
 		hashCache:  storageHashCache,
 	}
 }
+
 func (s *Storage) OpenSubStorage(id []byte) *Storage {
 	return &Storage{
 		account:    s.account,
@@ -607,10 +612,12 @@ type WrappedUint64 interface {
 	Decrement() (uint64, error)
 }
 
-var twoToThe256 = new(big.Int).Lsh(common.Big1, 256)
-var twoToThe256MinusOne = new(big.Int).Sub(twoToThe256, common.Big1)
-var twoToThe255 = new(big.Int).Lsh(common.Big1, 255)
-var twoToThe255MinusOne = new(big.Int).Sub(twoToThe255, common.Big1)
+var (
+	twoToThe256         = new(big.Int).Lsh(common.Big1, 256)
+	twoToThe256MinusOne = new(big.Int).Sub(twoToThe256, common.Big1)
+	twoToThe255         = new(big.Int).Lsh(common.Big1, 255)
+	twoToThe255MinusOne = new(big.Int).Sub(twoToThe255, common.Big1)
+)
 
 type StorageBackedBigUint struct {
 	StorageSlot

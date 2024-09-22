@@ -17,8 +17,10 @@ import (
 
 type RequestHandler func(req RequestType, input []byte) ([]byte, []byte, uint64)
 
-type RequestType int
-type u256 = uint256.Int
+type (
+	RequestType int
+	u256        = uint256.Int
+)
 
 const (
 	GetBytes32 RequestType = iota

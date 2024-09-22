@@ -450,7 +450,6 @@ func TestBacklogRaceCondition(t *testing.T) {
 	wg.Wait()
 	close(errs)
 	for err = range errs {
-
 		if err != nil {
 			t.Fatalf("unexpected error: %s", err)
 		}

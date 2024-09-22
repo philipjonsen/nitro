@@ -23,8 +23,7 @@ import (
 	"github.com/offchainlabs/nitro/util/testhelpers"
 )
 
-type TestChainContext struct {
-}
+type TestChainContext struct{}
 
 func (r *TestChainContext) Engine() consensus.Engine {
 	return arbos.Engine{}
@@ -53,7 +52,6 @@ var testChainConfig = &params.ChainConfig{
 }
 
 func TestEthDepositMessage(t *testing.T) {
-
 	_, statedb := arbosState.NewArbosMemoryBackedArbOSState()
 	addr := common.HexToAddress("0x32abcdeffffff")
 	balance := common.BigToHash(big.NewInt(789789897789798))

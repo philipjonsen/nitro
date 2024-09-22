@@ -143,10 +143,12 @@ type BroadcastClient struct {
 	adjustCount                     func(int32)
 }
 
-var ErrIncorrectFeedServerVersion = errors.New("incorrect feed server version")
-var ErrIncorrectChainId = errors.New("incorrect chain id")
-var ErrMissingChainId = errors.New("missing chain id")
-var ErrMissingFeedServerVersion = errors.New("missing feed server version")
+var (
+	ErrIncorrectFeedServerVersion = errors.New("incorrect feed server version")
+	ErrIncorrectChainId           = errors.New("incorrect chain id")
+	ErrMissingChainId             = errors.New("missing chain id")
+	ErrMissingFeedServerVersion   = errors.New("missing feed server version")
+)
 
 func NewBroadcastClient(
 	config ConfigFetcher,

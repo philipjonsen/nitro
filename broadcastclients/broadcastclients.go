@@ -17,11 +17,13 @@ import (
 	"github.com/offchainlabs/nitro/util/stopwaiter"
 )
 
-const ROUTER_QUEUE_SIZE = 1024
-const RECENT_FEED_INITIAL_MAP_SIZE = 1024
-const RECENT_FEED_ITEM_TTL = time.Second * 10
-const MAX_FEED_INACTIVE_TIME = time.Second * 5
-const PRIMARY_FEED_UPTIME = time.Minute * 10
+const (
+	ROUTER_QUEUE_SIZE            = 1024
+	RECENT_FEED_INITIAL_MAP_SIZE = 1024
+	RECENT_FEED_ITEM_TTL         = time.Second * 10
+	MAX_FEED_INACTIVE_TIME       = time.Second * 5
+	PRIMARY_FEED_UPTIME          = time.Minute * 10
+)
 
 type Router struct {
 	stopwaiter.StopWaiter

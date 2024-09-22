@@ -25,7 +25,7 @@ func TestSnapSync(t *testing.T) {
 	ctx, cancelCtx := context.WithCancel(context.Background())
 	defer cancelCtx()
 
-	var transferGas = util.NormalizeL2GasForL1GasInitial(800_000, params.GWei) // include room for aggregator L1 costs
+	transferGas := util.NormalizeL2GasForL1GasInitial(800_000, params.GWei) // include room for aggregator L1 costs
 
 	// 1st node with sequencer, stays up all the time.
 	builder := NewNodeBuilder(ctx).DefaultConfig(t, true)
@@ -161,7 +161,6 @@ func waitForBatchCountToCatchup(ctx context.Context, t *testing.T, inboxTrackerA
 				return
 			}
 		}
-
 	}
 }
 

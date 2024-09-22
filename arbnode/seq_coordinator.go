@@ -30,9 +30,7 @@ import (
 	"github.com/offchainlabs/nitro/util/stopwaiter"
 )
 
-var (
-	isActiveSequencer = metrics.NewRegisteredGauge("arb/sequencer/active", nil)
-)
+var isActiveSequencer = metrics.NewRegisteredGauge("arb/sequencer/active", nil)
 
 type SeqCoordinator struct {
 	stopwaiter.StopWaiter
@@ -332,7 +330,6 @@ func (c *SeqCoordinator) acquireLockoutAndWriteMessage(ctx context.Context, msgC
 		}
 		return nil
 	}, redisutil.CHOSENSEQ_KEY, redisutil.MSG_COUNT_KEY)
-
 	if err != nil {
 		return err
 	}

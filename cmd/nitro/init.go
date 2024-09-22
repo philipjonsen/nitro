@@ -361,7 +361,6 @@ func validateBlockChain(blockChain *core.BlockChain, chainConfig *params.ChainCo
 		if currentArbosState.ArbOSVersion() > currentArbosState.MaxArbosVersionSupported() {
 			return fmt.Errorf("attempted to launch node with ArbOS version %v on ArbOS state with version %v", currentArbosState.MaxArbosVersionSupported(), currentArbosState.ArbOSVersion())
 		}
-
 	}
 
 	return nil

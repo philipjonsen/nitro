@@ -20,21 +20,27 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-type addr = common.Address
-type hash = common.Hash
+type (
+	addr = common.Address
+	hash = common.Hash
+)
 
 // rust types
-type u8 = uint8
-type u16 = uint16
-type u32 = uint32
-type u64 = uint64
-type usize = uintptr
+type (
+	u8    = uint8
+	u16   = uint16
+	u32   = uint32
+	u64   = uint64
+	usize = uintptr
+)
 
 // opaque types
-type rustVec byte
-type rustConfig byte
-type rustModule byte
-type rustEvmData byte
+type (
+	rustVec     byte
+	rustConfig  byte
+	rustModule  byte
+	rustEvmData byte
+)
 
 //go:wasmimport programs activate
 func programActivate(
@@ -97,6 +103,7 @@ func activateProgram(
 // stub any non-consensus, Rust-side caching updates
 func cacheProgram(db vm.StateDB, module common.Hash, program Program, addressForLogging common.Address, code []byte, codeHash common.Hash, params *StylusParams, debug bool, time uint64, runMode core.MessageRunMode) {
 }
+
 func evictProgram(db vm.StateDB, module common.Hash, version uint16, debug bool, mode core.MessageRunMode, forever bool) {
 }
 
@@ -157,7 +164,8 @@ func CallProgramLoop(
 	gas uint64,
 	evmData *EvmData,
 	params *ProgParams,
-	reqHandler RequestHandler) (uint64, []byte, error) {
+	reqHandler RequestHandler,
+) (uint64, []byte, error) {
 	configHandler := params.createHandler()
 	dataHandler := evmData.createHandler()
 	debug := params.DebugMode

@@ -34,7 +34,6 @@ func TestLogArgs(t *testing.T) {
 	if str != "[1, 2, 3, \"h..d\"]" {
 		Fail(t, "unexpected logs limit 6 got:", str)
 	}
-
 }
 
 func createTestNode(t *testing.T, ctx context.Context, stuckOrFailed int64) *node.Node {

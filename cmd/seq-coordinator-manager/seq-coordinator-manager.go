@@ -15,17 +15,23 @@ import (
 )
 
 // Tview
-var pages = tview.NewPages()
-var app = tview.NewApplication()
+var (
+	pages = tview.NewPages()
+	app   = tview.NewApplication()
+)
 
 // Lists
-var prioritySeqList = tview.NewList().ShowSecondaryText(false)
-var nonPrioritySeqList = tview.NewList().ShowSecondaryText(false)
+var (
+	prioritySeqList    = tview.NewList().ShowSecondaryText(false)
+	nonPrioritySeqList = tview.NewList().ShowSecondaryText(false)
+)
 
 // Forms
-var addSeqForm = tview.NewForm()
-var priorityForm = tview.NewForm()
-var nonPriorityForm = tview.NewForm()
+var (
+	addSeqForm      = tview.NewForm()
+	priorityForm    = tview.NewForm()
+	nonPriorityForm = tview.NewForm()
+)
 
 // Sequencer coordinator management UI data store
 type manager struct {

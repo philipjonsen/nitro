@@ -178,7 +178,7 @@ func MakePrecompile(metadata *bind.MetaData, implementer interface{}) (addr, *Pr
 			log.Crit("Precompile " + contract + " must implement " + name)
 		}
 
-		var needs = []reflect.Type{
+		needs := []reflect.Type{
 			implementerType,            // the contract itself
 			reflect.TypeOf((ctx)(nil)), // this call's context
 		}
@@ -206,7 +206,7 @@ func MakePrecompile(metadata *bind.MetaData, implementer interface{}) (addr, *Pr
 			needs = append(needs, arg.Type.GetType())
 		}
 
-		var outputs = []reflect.Type{}
+		outputs := []reflect.Type{}
 		for _, out := range method.Outputs {
 			outputs = append(outputs, out.Type.GetType())
 		}
@@ -259,7 +259,7 @@ func MakePrecompile(metadata *bind.MetaData, implementer interface{}) (addr, *Pr
 	for _, event := range source.Events {
 		name := event.RawName
 
-		var needs = []reflect.Type{
+		needs := []reflect.Type{
 			reflect.TypeOf(&Context{}), // where the emit goes
 			reflect.TypeOf(&vm.EVM{}),  // where the emit goes
 		}
@@ -327,7 +327,6 @@ func MakePrecompile(metadata *bind.MetaData, implementer interface{}) (addr, *Pr
 		nilError := reflect.Zero(reflect.TypeOf((*error)(nil)).Elem())
 
 		gascost := func(args []reflect.Value) []reflect.Value {
-
 			cost := params.LogGas
 			// #nosec G115
 			cost += params.LogTopicGas * uint64(1+len(topicInputs))
@@ -354,7 +353,6 @@ func MakePrecompile(metadata *bind.MetaData, implementer interface{}) (addr, *Pr
 		}
 
 		emit := func(args []reflect.Value) []reflect.Value {
-
 			callerCtx := args[0].Interface().(ctx) //nolint:errcheck
 			evm := args[1].Interface().(*vm.EVM)   //nolint:errcheck
 			state := evm.StateDB

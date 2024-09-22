@@ -87,7 +87,8 @@ func WrapStorageWithCache(
 	ctx context.Context,
 	config *DataAvailabilityConfig,
 	storageService StorageService,
-	lifecycleManager *LifecycleManager) (StorageService, error) {
+	lifecycleManager *LifecycleManager,
+) (StorageService, error) {
 	if storageService == nil {
 		return nil, nil
 	}

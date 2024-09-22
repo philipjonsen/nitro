@@ -45,9 +45,11 @@ type sequencerMessage struct {
 	segments             [][]byte
 }
 
-const MaxDecompressedLen int = 1024 * 1024 * 16 // 16 MiB
-const maxZeroheavyDecompressedLen = 101*MaxDecompressedLen/100 + 64
-const MaxSegmentsPerSequencerMessage = 100 * 1024
+const (
+	MaxDecompressedLen             int = 1024 * 1024 * 16 // 16 MiB
+	maxZeroheavyDecompressedLen        = 101*MaxDecompressedLen/100 + 64
+	MaxSegmentsPerSequencerMessage     = 100 * 1024
+)
 
 func parseSequencerMessage(ctx context.Context, batchNum uint64, batchBlockHash common.Hash, data []byte, dapReaders []daprovider.Reader, keysetValidationMode daprovider.KeysetValidationMode) (*sequencerMessage, error) {
 	if len(data) < 40 {
@@ -183,11 +185,13 @@ func NewInboxMultiplexer(backend InboxBackend, delayedMessagesRead uint64, dapRe
 	}
 }
 
-const BatchSegmentKindL2Message uint8 = 0
-const BatchSegmentKindL2MessageBrotli uint8 = 1
-const BatchSegmentKindDelayedMessages uint8 = 2
-const BatchSegmentKindAdvanceTimestamp uint8 = 3
-const BatchSegmentKindAdvanceL1BlockNumber uint8 = 4
+const (
+	BatchSegmentKindL2Message            uint8 = 0
+	BatchSegmentKindL2MessageBrotli      uint8 = 1
+	BatchSegmentKindDelayedMessages      uint8 = 2
+	BatchSegmentKindAdvanceTimestamp     uint8 = 3
+	BatchSegmentKindAdvanceL1BlockNumber uint8 = 4
+)
 
 // Pop returns the message from the top of the sequencer inbox and removes it from the queue.
 // Note: this does *not* return parse errors, those are transformed into invalid messages

@@ -36,6 +36,7 @@ var DefaultSignVerifyConfig = SignVerifyConfig{
 	SymmetricSign:     false,
 	Symmetric:         EmptySimpleHmacConfig,
 }
+
 var TestSignVerifyConfig = SignVerifyConfig{
 	ECDSA: VerifierConfig{
 		AcceptSequencer: true,

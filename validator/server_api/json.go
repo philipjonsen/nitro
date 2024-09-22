@@ -38,7 +38,6 @@ func MachineStepResultToJson(result *validator.MachineStepResult) *MachineStepRe
 }
 
 func MachineStepResultFromJson(resultJson *MachineStepResultJson) (*validator.MachineStepResult, error) {
-
 	return &validator.MachineStepResult{
 		Hash:        resultJson.Hash,
 		Position:    resultJson.Position,

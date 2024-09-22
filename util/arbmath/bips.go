@@ -5,11 +5,15 @@ package arbmath
 
 import "math/big"
 
-type Bips int64
-type UBips uint64
+type (
+	Bips  int64
+	UBips uint64
+)
 
-const OneInBips Bips = 10000
-const OneInUBips UBips = 10000
+const (
+	OneInBips  Bips  = 10000
+	OneInUBips UBips = 10000
+)
 
 func NaturalToBips(natural int64) Bips {
 	return Bips(SaturatingMul(natural, int64(OneInBips)))

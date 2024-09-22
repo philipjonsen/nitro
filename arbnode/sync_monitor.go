@@ -105,7 +105,7 @@ func (s *SyncMonitor) maxMessageCount() (arbutil.MessageIndex, error) {
 	}
 
 	if s.coordinator != nil {
-		coordinatorMessageCount, err := s.coordinator.GetRemoteMsgCount() //NOTE: this creates a remote call
+		coordinatorMessageCount, err := s.coordinator.GetRemoteMsgCount() // NOTE: this creates a remote call
 		if err != nil {
 			return msgCount, err
 		}
@@ -165,7 +165,7 @@ func (s *SyncMonitor) FullSyncProgressMap() map[string]interface{} {
 	}
 
 	if s.coordinator != nil {
-		coordinatorMessageCount, err := s.coordinator.GetRemoteMsgCount() //NOTE: this creates a remote call
+		coordinatorMessageCount, err := s.coordinator.GetRemoteMsgCount() // NOTE: this creates a remote call
 		if err != nil {
 			res["coordinatorMsgCountError"] = err.Error()
 		} else {

@@ -22,6 +22,7 @@ func NewWriterPanicWrapper(dataAvailabilityService DataAvailabilityServiceWriter
 		DataAvailabilityServiceWriter: dataAvailabilityService,
 	}
 }
+
 func (w *WriterPanicWrapper) String() string {
 	return fmt.Sprintf("WriterPanicWrapper{%v}", w.DataAvailabilityServiceWriter)
 }
@@ -43,6 +44,7 @@ func NewReaderPanicWrapper(dataAvailabilityService DataAvailabilityServiceReader
 		DataAvailabilityServiceReader: dataAvailabilityService,
 	}
 }
+
 func (w *ReaderPanicWrapper) String() string {
 	return fmt.Sprintf("ReaderPanicWrapper{%v}", w.DataAvailabilityServiceReader)
 }

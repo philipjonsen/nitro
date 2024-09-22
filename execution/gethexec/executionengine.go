@@ -12,6 +12,7 @@ package gethexec
 #include "arbitrator.h"
 */
 import "C"
+
 import (
 	"bytes"
 	"context"

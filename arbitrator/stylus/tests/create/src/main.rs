@@ -3,7 +3,12 @@
 
 #![no_main]
 
-use stylus_sdk::{alloy_primitives::{B256, U256}, deploy::RawDeploy, evm, prelude::*};
+use stylus_sdk::{
+    alloy_primitives::{B256, U256},
+    deploy::RawDeploy,
+    evm,
+    prelude::*,
+};
 
 #[entrypoint]
 fn user_main(input: Vec<u8>) -> Result<Vec<u8>, Vec<u8>> {

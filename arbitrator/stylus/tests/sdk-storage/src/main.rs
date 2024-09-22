@@ -3,11 +3,11 @@
 
 #![no_main]
 
+use mini_alloc::MiniAlloc;
 use stylus_sdk::{
     alloy_primitives::{Address, Signed, Uint, B256, I32, U16, U256, U64, U8},
     prelude::*,
 };
-use mini_alloc::MiniAlloc;
 
 #[global_allocator]
 static ALLOC: MiniAlloc = MiniAlloc::INIT;

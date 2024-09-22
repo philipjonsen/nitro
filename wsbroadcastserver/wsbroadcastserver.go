@@ -404,7 +404,6 @@ func (s *WSBroadcastServer) StartWithHeader(ctx context.Context, header ws.Hands
 				}
 			})
 		})
-
 		if err != nil {
 			log.Warn("error starting client connection poller", "err", err)
 		}

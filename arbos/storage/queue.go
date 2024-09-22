@@ -103,7 +103,6 @@ func (q *Queue) Shift() (bool, error) {
 
 // ForEach apply a closure on the enumerated elements element of the queue
 func (q *Queue) ForEach(closure func(uint64, common.Hash) (bool, error)) error {
-
 	size, err := q.Size()
 	if err != nil {
 		return err

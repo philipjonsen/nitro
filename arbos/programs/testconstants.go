@@ -16,7 +16,6 @@ import "C"
 import "fmt"
 
 func testConstants() error {
-
 	// this closure exists to avoid polluting the package namespace
 	index := 1
 	errIfNotEq := func(a RequestType, b uint32) error {

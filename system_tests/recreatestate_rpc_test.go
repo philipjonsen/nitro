@@ -165,7 +165,6 @@ func TestRecreateStateForRPCBigEnoughDepthLimit(t *testing.T) {
 	if balance.Cmp(expectedBalance) != 0 {
 		Fatal(t, "unexpected balance result for last block, want: ", expectedBalance, " have: ", balance)
 	}
-
 }
 
 func TestRecreateStateForRPCDepthLimitExceeded(t *testing.T) {

@@ -262,6 +262,7 @@ func WriteToConfigFile(path string, jsonConfig string) error {
 func PollLiveConfigUntilEqual(liveConfig *genericconf.LiveConfig[*NodeConfig], expected *NodeConfig) bool {
 	return PollLiveConfig(liveConfig, expected, true)
 }
+
 func PollLiveConfigUntilNotEqual(liveConfig *genericconf.LiveConfig[*NodeConfig], expected *NodeConfig) bool {
 	return PollLiveConfig(liveConfig, expected, false)
 }

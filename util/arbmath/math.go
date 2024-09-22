@@ -428,7 +428,6 @@ func ApproxExpBasisPoints(value Bips, accuracy uint64) Bips {
 // ApproxSquareRoot return the Newton's method approximation of sqrt(x)
 // The error should be no more than 1 for values up to 2^63
 func ApproxSquareRoot(value uint64) uint64 {
-
 	if value == 0 {
 		return 0
 	}

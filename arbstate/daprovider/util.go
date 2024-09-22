@@ -136,9 +136,11 @@ var (
 
 type KeysetValidationMode uint8
 
-const KeysetValidate KeysetValidationMode = 0
-const KeysetPanicIfInvalid KeysetValidationMode = 1
-const KeysetDontValidate KeysetValidationMode = 2
+const (
+	KeysetValidate       KeysetValidationMode = 0
+	KeysetPanicIfInvalid KeysetValidationMode = 1
+	KeysetDontValidate   KeysetValidationMode = 2
+)
 
 func RecoverPayloadFromDasBatch(
 	ctx context.Context,
@@ -413,7 +415,6 @@ func (keyset *DataAvailabilityKeyset) VerifySignature(signersMask uint64, data [
 	}
 	aggregatedPubKey := blsSignatures.AggregatePublicKeys(pubkeys)
 	success, err := blsSignatures.VerifySignature(sig, data, aggregatedPubKey)
-
 	if err != nil {
 		return err
 	}
@@ -469,7 +470,6 @@ func StringToExpirationPolicy(s string) (ExpirationPolicy, error) {
 }
 
 func Serialize(c *DataAvailabilityCertificate) []byte {
-
 	flags := DASMessageHeaderFlag
 	if c.Version != 0 {
 		flags |= TreeDASMessageHeaderFlag
