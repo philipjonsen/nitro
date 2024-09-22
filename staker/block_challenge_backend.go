@@ -129,8 +129,10 @@ func (b *BlockChallengeBackend) FindGlobalStateFromMessageCount(count arbutil.Me
 	}, nil
 }
 
-const StatusFinished uint8 = 1
-const StatusTooFar uint8 = 3
+const (
+	StatusFinished uint8 = 1
+	StatusTooFar   uint8 = 3
+)
 
 func (b *BlockChallengeBackend) GetMessageCountAtStep(step uint64) arbutil.MessageIndex {
 	return b.startMsgCount + arbutil.MessageIndex(step)

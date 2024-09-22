@@ -20,9 +20,11 @@ import (
 	"github.com/offchainlabs/nitro/arbos/arbosState"
 )
 
-var RebuildingPositionKey []byte = []byte("_rebuildingPosition")             // contains the codehash upto which rebuilding of wasm store was last completed. Initialized to common.Hash{} at the start
-var RebuildingStartBlockHashKey []byte = []byte("_rebuildingStartBlockHash") // contains the block hash of starting block when rebuilding of wasm store first began
-var RebuildingDone common.Hash = common.BytesToHash([]byte("_done"))         // indicates that the rebuilding is done, if RebuildingPositionKey holds this value it implies rebuilding was completed
+var (
+	RebuildingPositionKey       []byte      = []byte("_rebuildingPosition")       // contains the codehash upto which rebuilding of wasm store was last completed. Initialized to common.Hash{} at the start
+	RebuildingStartBlockHashKey []byte      = []byte("_rebuildingStartBlockHash") // contains the block hash of starting block when rebuilding of wasm store first began
+	RebuildingDone              common.Hash = common.BytesToHash([]byte("_done")) // indicates that the rebuilding is done, if RebuildingPositionKey holds this value it implies rebuilding was completed
+)
 
 func ReadFromKeyValueStore[T any](store ethdb.KeyValueStore, key []byte) (T, error) {
 	var empty T

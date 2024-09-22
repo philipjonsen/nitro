@@ -68,8 +68,10 @@ func testCompression(data []byte, doneChan chan struct{}) {
 	doneChan <- struct{}{}
 }
 
-const FIELD_ELEMENTS_PER_BLOB = 4096
-const BYTES_PER_FIELD_ELEMENT = 32
+const (
+	FIELD_ELEMENTS_PER_BLOB = 4096
+	BYTES_PER_FIELD_ELEMENT = 32
+)
 
 var BLS_MODULUS, _ = new(big.Int).SetString("52435875175126190479447740508185965837690552500527637822603658699938581184513", 10)
 

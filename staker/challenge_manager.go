@@ -28,9 +28,11 @@ const maxBisectionDegree uint64 = 40
 
 const challengeModeExecution = 2
 
-var initiatedChallengeID common.Hash
-var challengeBisectedID common.Hash
-var executionChallengeBegunID common.Hash
+var (
+	initiatedChallengeID      common.Hash
+	challengeBisectedID       common.Hash
+	executionChallengeBegunID common.Hash
+)
 
 func init() {
 	parsedChallengeManagerABI, err := challengegen.ChallengeManagerMetaData.GetAbi()

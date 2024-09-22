@@ -18,6 +18,7 @@ typedef uint64_t u64;
 typedef size_t usize;
 */
 import "C"
+
 import (
 	"errors"
 	"fmt"
@@ -34,16 +35,18 @@ import (
 	"github.com/offchainlabs/nitro/arbutil"
 )
 
-type u8 = C.uint8_t
-type u16 = C.uint16_t
-type u32 = C.uint32_t
-type u64 = C.uint64_t
-type usize = C.size_t
-type cbool = C._Bool
-type bytes20 = C.Bytes20
-type bytes32 = C.Bytes32
-type rustBytes = C.RustBytes
-type rustSlice = C.RustSlice
+type (
+	u8        = C.uint8_t
+	u16       = C.uint16_t
+	u32       = C.uint32_t
+	u64       = C.uint64_t
+	usize     = C.size_t
+	cbool     = C._Bool
+	bytes20   = C.Bytes20
+	bytes32   = C.Bytes32
+	rustBytes = C.RustBytes
+	rustSlice = C.RustSlice
+)
 
 func activateProgram(
 	db vm.StateDB,
@@ -310,8 +313,10 @@ func ResizeWasmLruCache(size uint32) {
 	C.stylus_cache_lru_resize(u32(size))
 }
 
-const DefaultTargetDescriptionArm = "arm64-linux-unknown+neon"
-const DefaultTargetDescriptionX86 = "x86_64-linux-unknown+sse4.2+lzcnt+bmi"
+const (
+	DefaultTargetDescriptionArm = "arm64-linux-unknown+neon"
+	DefaultTargetDescriptionX86 = "x86_64-linux-unknown+sse4.2+lzcnt+bmi"
+)
 
 func SetTarget(name ethdb.WasmTarget, description string, native bool) error {
 	output := &rustBytes{}

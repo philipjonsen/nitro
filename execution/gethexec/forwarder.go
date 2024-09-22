@@ -147,8 +147,10 @@ func (f *TxForwarder) PublishTransaction(inctx context.Context, tx *types.Transa
 	return errors.New("failed to publish transaction to any of the forwarding targets")
 }
 
-const cacheUpstreamHealth = 2 * time.Second
-const maxHealthTimeout = 10 * time.Second
+const (
+	cacheUpstreamHealth = 2 * time.Second
+	maxHealthTimeout    = 10 * time.Second
+)
 
 // CheckHealth returns health of the highest priority forwarding target
 func (f *TxForwarder) CheckHealth(inctx context.Context) error {

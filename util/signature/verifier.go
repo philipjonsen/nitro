@@ -32,9 +32,11 @@ type DangerousVerifierConfig struct {
 	AcceptMissing bool `koanf:"accept-missing"`
 }
 
-var ErrSignatureNotVerified = errors.New("signature not verified")
-var ErrMissingSignature = fmt.Errorf("%w: signature not found", ErrSignatureNotVerified)
-var ErrSignerNotApproved = fmt.Errorf("%w: signer not approved", ErrSignatureNotVerified)
+var (
+	ErrSignatureNotVerified = errors.New("signature not verified")
+	ErrMissingSignature     = fmt.Errorf("%w: signature not found", ErrSignatureNotVerified)
+	ErrSignerNotApproved    = fmt.Errorf("%w: signer not approved", ErrSignatureNotVerified)
+)
 
 func FeedVerifierConfigAddOptions(prefix string, f *flag.FlagSet) {
 	f.StringSlice(prefix+".allowed-addresses", DefultFeedVerifierConfig.AllowedAddresses, "a list of allowed addresses")

@@ -111,7 +111,6 @@ func testReceiveMessages(t *testing.T, clientCompression bool, serverCompression
 	}()
 
 	wg.Wait()
-
 }
 
 func TestInvalidSignature(t *testing.T) {
@@ -279,7 +278,6 @@ func startMakeBroadcastClient(ctx context.Context, t *testing.T, clientConfig Co
 			}
 		}
 	}()
-
 }
 
 func TestServerClientDisconnect(t *testing.T) {
@@ -424,6 +422,7 @@ func TestBroadcastClientConfirmedMessage(t *testing.T) {
 
 	broadcastClient.StopAndWait()
 }
+
 func TestServerIncorrectChainId(t *testing.T) {
 	t.Parallel()
 	ctx, cancel := context.WithCancel(context.Background())

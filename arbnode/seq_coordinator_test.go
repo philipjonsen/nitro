@@ -154,7 +154,6 @@ func TestRedisSeqCoordinatorAtomic(t *testing.T) {
 		// wait out the current lock
 		time.Sleep(time.Millisecond * 20)
 	}
-
 }
 
 func TestSeqCoordinatorDeletesFinalizedMessages(t *testing.T) {

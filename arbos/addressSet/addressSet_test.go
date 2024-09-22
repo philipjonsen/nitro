@@ -296,7 +296,6 @@ func TestRectifyMapping(t *testing.T) {
 	if err == nil {
 		Fail(t, "RectifyMapping called by a correctly mapped owner")
 	}
-
 }
 
 func checkIfRectifyMappingWorks(t *testing.T, aset *AddressSet, owners []common.Address, clearList bool) {

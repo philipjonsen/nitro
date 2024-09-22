@@ -63,7 +63,8 @@ type Contract struct {
 }
 
 func NewContract(dp *dataposter.DataPoster, address *common.Address, walletFactoryAddr, rollupAddress common.Address, l1Reader *headerreader.HeaderReader, auth *bind.TransactOpts, rollupFromBlock int64, onWalletCreated func(common.Address),
-	getExtraGas func() uint64) (*Contract, error) {
+	getExtraGas func() uint64,
+) (*Contract, error) {
 	var con *rollupgen.ValidatorWallet
 	if address != nil {
 		var err error

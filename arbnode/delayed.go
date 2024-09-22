@@ -26,11 +26,13 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-var messageDeliveredID common.Hash
-var inboxMessageDeliveredID common.Hash
-var inboxMessageFromOriginID common.Hash
-var l2MessageFromOriginCallABI abi.Method
-var delayedInboxAccsCallABI abi.Method
+var (
+	messageDeliveredID         common.Hash
+	inboxMessageDeliveredID    common.Hash
+	inboxMessageFromOriginID   common.Hash
+	l2MessageFromOriginCallABI abi.Method
+	delayedInboxAccsCallABI    abi.Method
+)
 
 func init() {
 	parsedIBridgeABI, err := bridgegen.IBridgeMetaData.GetAbi()

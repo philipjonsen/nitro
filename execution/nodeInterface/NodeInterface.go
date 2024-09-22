@@ -48,9 +48,11 @@ type NodeInterface struct {
 	}
 }
 
-var merkleTopic common.Hash
-var l2ToL1TxTopic common.Hash
-var l2ToL1TransactionTopic common.Hash
+var (
+	merkleTopic            common.Hash
+	l2ToL1TxTopic          common.Hash
+	l2ToL1TransactionTopic common.Hash
+)
 
 func (n NodeInterface) NitroGenesisBlock(c ctx) (huge, error) {
 	block := n.backend.ChainConfig().ArbitrumChainParams.GenesisBlockNum
@@ -188,7 +190,6 @@ func (n NodeInterface) EstimateRetryableTicket(
 	callValueRefundAddress addr,
 	data []byte,
 ) error {
-
 	var pRetryTo *addr
 	if to != (addr{}) {
 		pRetryTo = &to
@@ -225,7 +226,6 @@ func (n NodeInterface) EstimateRetryableTicket(
 }
 
 func (n NodeInterface) ConstructOutboxProof(c ctx, evm mech, size, leaf uint64) (bytes32, bytes32, []bytes32, error) {
-
 	hash0 := bytes32{}
 
 	currentBlock := n.backend.CurrentBlock()
@@ -292,13 +292,12 @@ func (n NodeInterface) ConstructOutboxProof(c ctx, evm mech, size, leaf uint64) 
 	var search func(lo, hi uint64, find []merkletree.LevelAndLeaf)
 	var searchLogs []*types.Log
 	var searchErr error
-	var searchPositions = make(map[hash]struct{})
+	searchPositions := make(map[hash]struct{})
 	for _, item := range query {
 		hash := common.BigToHash(item.ToBigInt())
 		searchPositions[hash] = struct{}{}
 	}
 	search = func(lo, hi uint64, find []merkletree.LevelAndLeaf) {
-
 		mid := (lo + hi) / 2
 
 		// #nosec G115
@@ -515,7 +514,6 @@ func (n NodeInterface) messageArgs(
 func (n NodeInterface) GasEstimateL1Component(
 	c ctx, evm mech, value huge, to addr, contractCreation bool, data []byte,
 ) (uint64, huge, huge, error) {
-
 	// construct a similar message with a random gas limit to avoid underestimating
 	args := n.messageArgs(evm, value, to, contractCreation, data)
 	randomGas := l1pricing.RandomGas
@@ -604,8 +602,8 @@ func (n NodeInterface) GasEstimateComponents(
 }
 
 func (n NodeInterface) LegacyLookupMessageBatchProof(c ctx, evm mech, batchNum huge, index uint64) (
-	proof []bytes32, path huge, l2Sender addr, l1Dest addr, l2Block huge, l1Block huge, timestamp huge, amount huge, calldataForL1 []byte, err error) {
-
+	proof []bytes32, path huge, l2Sender addr, l1Dest addr, l2Block huge, l1Block huge, timestamp huge, amount huge, calldataForL1 []byte, err error,
+) {
 	node, err := gethExecFromNodeInterfaceBackend(n.backend)
 	if err != nil {
 		return

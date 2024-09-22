@@ -21,7 +21,7 @@ fn main() {
         for i in 0..BYTES32_VALS_NUM {
             let mut bytebuffer = Bytes32([0x0; 32]);
             for j in 0..32 {
-                bytebuffer.0[j] = (j + i*0x10) as u8;
+                bytebuffer.0[j] = (j + i * 0x10) as u8;
             }
             println!("set_bytes32 nr. {}", i);
             wavm_set_globalstate_bytes32(i as u32, bytebuffer.0.as_ptr());
@@ -43,9 +43,14 @@ fn main() {
             for j in 0..32 {
                 let foundval = localarray[j];
                 println!("byte {} found {}", j, foundval);
-                if foundval != (j + i*0x10) as u8 {
-                    panic!("globalstate bytes32 idx {} byte {} expected {} got{}",
-                            i, j, j + i*0x10, foundval)
+                if foundval != (j + i * 0x10) as u8 {
+                    panic!(
+                        "globalstate bytes32 idx {} byte {} expected {} got{}",
+                        i,
+                        j,
+                        j + i * 0x10,
+                        foundval
+                    )
                 }
             }
         }

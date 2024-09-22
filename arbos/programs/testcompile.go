@@ -20,6 +20,7 @@ typedef size_t usize;
 void handleReqWrap(usize api, u32 req_type, RustSlice *data, u64 *out_cost, GoSliceData *out_result, GoSliceData *out_raw_data);
 */
 import "C"
+
 import (
 	"fmt"
 	"os"
@@ -41,7 +42,6 @@ func Wat2Wasm(wat []byte) ([]byte, error) {
 }
 
 func testCompileArch(store bool) error {
-
 	localTarget := rawdb.LocalTarget()
 	nativeArm64 := localTarget == rawdb.TargetArm64
 	nativeAmd64 := localTarget == rawdb.TargetAmd64

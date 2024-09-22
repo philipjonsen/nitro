@@ -23,8 +23,10 @@ type RecordResult struct {
 	UserWasms state.UserWasms
 }
 
-var ErrRetrySequencer = errors.New("please retry transaction")
-var ErrSequencerInsertLockTaken = errors.New("insert lock taken")
+var (
+	ErrRetrySequencer           = errors.New("please retry transaction")
+	ErrSequencerInsertLockTaken = errors.New("insert lock taken")
+)
 
 // always needed
 type ExecutionClient interface {

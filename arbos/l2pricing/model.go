@@ -10,19 +10,23 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-const InitialSpeedLimitPerSecondV0 = 1000000
-const InitialPerBlockGasLimitV0 uint64 = 20 * 1000000
-const InitialSpeedLimitPerSecondV6 = 7000000
-const InitialPerBlockGasLimitV6 uint64 = 32 * 1000000
-const InitialMinimumBaseFeeWei = params.GWei / 10
-const InitialBaseFeeWei = InitialMinimumBaseFeeWei
-const InitialGasPoolSeconds = 10 * 60
-const InitialRateEstimateInertia = 60
-const InitialPricingInertia = 102
-const InitialBacklogTolerance = 10
+const (
+	InitialSpeedLimitPerSecondV0        = 1000000
+	InitialPerBlockGasLimitV0    uint64 = 20 * 1000000
+	InitialSpeedLimitPerSecondV6        = 7000000
+	InitialPerBlockGasLimitV6    uint64 = 32 * 1000000
+	InitialMinimumBaseFeeWei            = params.GWei / 10
+	InitialBaseFeeWei                   = InitialMinimumBaseFeeWei
+	InitialGasPoolSeconds               = 10 * 60
+	InitialRateEstimateInertia          = 60
+	InitialPricingInertia               = 102
+	InitialBacklogTolerance             = 10
+)
 
-var InitialGasPoolTargetBips = arbmath.PercentToBips(80)
-var InitialGasPoolWeightBips = arbmath.PercentToBips(60)
+var (
+	InitialGasPoolTargetBips = arbmath.PercentToBips(80)
+	InitialGasPoolWeightBips = arbmath.PercentToBips(60)
+)
 
 func (ps *L2PricingState) AddToGasPool(gas int64) error {
 	backlog, err := ps.GasBacklog()

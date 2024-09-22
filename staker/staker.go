@@ -304,7 +304,6 @@ func NewStaker(
 	validatorUtilsAddress common.Address,
 	fatalErr chan<- error,
 ) (*Staker, error) {
-
 	if err := config().Validate(); err != nil {
 		return nil, err
 	}
@@ -618,7 +617,7 @@ func (s *Staker) IsWhitelisted(ctx context.Context) (bool, error) {
 
 func (s *Staker) shouldAct(ctx context.Context) bool {
 	cfg := s.config()
-	var gasPriceHigh = false
+	gasPriceHigh := false
 	var gasPriceFloat float64
 	gasPrice, err := s.client.SuggestGasPrice(ctx)
 	if err != nil {

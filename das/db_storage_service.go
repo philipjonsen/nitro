@@ -65,7 +65,6 @@ func LocalDBStorageConfigAddOptions(prefix string, f *flag.FlagSet) {
 	f.Int(prefix+".num-compactors", DefaultLocalDBStorageConfig.NumCompactors, "BadgerDB option: Sets the number of compaction workers to run concurrently")
 	f.Int64(prefix+".base-table-size", DefaultLocalDBStorageConfig.BaseTableSize, "BadgerDB option: sets the maximum size in bytes for LSM table or file in the base level")
 	f.Int64(prefix+".value-log-file-size", DefaultLocalDBStorageConfig.ValueLogFileSize, "BadgerDB option: sets the maximum size of a single log file")
-
 }
 
 type DBStorageService struct {

@@ -270,7 +270,6 @@ func TestRedisSeqCoordinatorPriorities(t *testing.T) {
 	for _, node := range needsStop {
 		node.StopAndWait()
 	}
-
 }
 
 func testCoordinatorMessageSync(t *testing.T, successCase bool) {

@@ -29,10 +29,12 @@ var (
 	conditionalTxAcceptedByTxPreCheckerOldStateCounter     = metrics.NewRegisteredCounter("arb/txprechecker/conditionaltx/oldstate/accepted", nil)
 )
 
-const TxPreCheckerStrictnessNone uint = 0
-const TxPreCheckerStrictnessAlwaysCompatible uint = 10
-const TxPreCheckerStrictnessLikelyCompatible uint = 20
-const TxPreCheckerStrictnessFullValidation uint = 30
+const (
+	TxPreCheckerStrictnessNone             uint = 0
+	TxPreCheckerStrictnessAlwaysCompatible uint = 10
+	TxPreCheckerStrictnessLikelyCompatible uint = 20
+	TxPreCheckerStrictnessFullValidation   uint = 30
+)
 
 type TxPreCheckerConfig struct {
 	Strictness             uint  `koanf:"strictness" reload:"hot"`

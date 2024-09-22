@@ -17,8 +17,10 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-const RetryableLifetimeSeconds = 7 * 24 * 60 * 60 // one week
-const RetryableReapPrice = 58000
+const (
+	RetryableLifetimeSeconds = 7 * 24 * 60 * 60 // one week
+	RetryableReapPrice       = 58000
+)
 
 type RetryableState struct {
 	retryables   *storage.Storage

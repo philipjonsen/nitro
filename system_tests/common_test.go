@@ -82,8 +82,10 @@ import (
 	"golang.org/x/exp/slog"
 )
 
-type info = *BlockchainTestInfo
-type client = arbutil.L1Interface
+type (
+	info   = *BlockchainTestInfo
+	client = arbutil.L1Interface
+)
 
 type SecondNodeParams struct {
 	nodeConfig  *arbnode.Config
@@ -529,8 +531,7 @@ func (b *NodeBuilder) Build2ndNode(t *testing.T, params *SecondNodeParams) (*Tes
 	}
 
 	l2 := NewTestClient(b.ctx)
-	l2.Client, l2.ConsensusNode =
-		Create2ndNodeWithConfig(t, b.ctx, b.L2.ConsensusNode, b.L1.Stack, b.L1Info, params.initData, params.nodeConfig, params.execConfig, params.stackConfig, b.valnodeConfig, params.addresses, b.initMessage)
+	l2.Client, l2.ConsensusNode = Create2ndNodeWithConfig(t, b.ctx, b.L2.ConsensusNode, b.L1.Stack, b.L1Info, params.initData, params.nodeConfig, params.execConfig, params.stackConfig, b.valnodeConfig, params.addresses, b.initMessage)
 	l2.ExecNode = getExecNode(t, l2.ConsensusNode)
 	l2.cleanup = func() { l2.ConsensusNode.StopAndWait() }
 	return l2, func() { l2.cleanup() }
@@ -1016,7 +1017,8 @@ func DeployOnTestL1(
 		l1info.PrepareTx("Faucet", "RollupOwner", 30000, big.NewInt(9223372036854775807), nil),
 		l1info.PrepareTx("Faucet", "Sequencer", 30000, big.NewInt(9223372036854775807), nil),
 		l1info.PrepareTx("Faucet", "Validator", 30000, big.NewInt(9223372036854775807), nil),
-		l1info.PrepareTx("Faucet", "User", 30000, big.NewInt(9223372036854775807), nil)})
+		l1info.PrepareTx("Faucet", "User", 30000, big.NewInt(9223372036854775807), nil),
+	})
 
 	l1TransactionOpts := l1info.GetDefaultTransactOpts("RollupOwner", ctx)
 	serializedChainConfig, err := json.Marshal(chainConfig)

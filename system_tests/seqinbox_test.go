@@ -62,6 +62,7 @@ func encodeAddBatch(seqABI *abi.ABI, seqNum *big.Int, message []byte, afterDelay
 	fullData = append(fullData, inputData...)
 	return fullData, nil
 }
+
 func diffAccessList(accessed, al types.AccessList) string {
 	m := make(map[common.Address]map[common.Hash]bool)
 	for i := 0; i < len(al); i++ {

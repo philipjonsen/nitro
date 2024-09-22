@@ -46,7 +46,6 @@ func TestSlotAddress(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 func TestSumBytes(t *testing.T) {

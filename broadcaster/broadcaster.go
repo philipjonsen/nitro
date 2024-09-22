@@ -118,7 +118,6 @@ func (b *Broadcaster) BroadcastMessages(
 }
 
 func (b *Broadcaster) BroadcastFeedMessages(messages []*m.BroadcastFeedMessage) {
-
 	bm := &m.BroadcastMessage{
 		Version:  1,
 		Messages: messages,

@@ -26,15 +26,19 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-type addr = common.Address
-type mech = *vm.EVM
-type huge = *big.Int
-type hash = common.Hash
-type bytes32 = [32]byte
-type ctx = *precompiles.Context
+type (
+	addr    = common.Address
+	mech    = *vm.EVM
+	huge    = *big.Int
+	hash    = common.Hash
+	bytes32 = [32]byte
+	ctx     = *precompiles.Context
+)
 
-type BackendAPI = core.NodeInterfaceBackendAPI
-type ExecutionResult = core.ExecutionResult
+type (
+	BackendAPI      = core.NodeInterfaceBackendAPI
+	ExecutionResult = core.ExecutionResult
+)
 
 func init() {
 	gethhook.RequireHookedGeth()

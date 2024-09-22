@@ -79,8 +79,10 @@ const (
 )
 
 // one minute at 100000 bytes / sec
-var InitialEquilibrationUnitsV0 = arbmath.UintToBig(60 * params.TxDataNonZeroGasEIP2028 * 100000)
-var InitialEquilibrationUnitsV6 = arbmath.UintToBig(params.TxDataNonZeroGasEIP2028 * 10000000)
+var (
+	InitialEquilibrationUnitsV0 = arbmath.UintToBig(60 * params.TxDataNonZeroGasEIP2028 * 100000)
+	InitialEquilibrationUnitsV6 = arbmath.UintToBig(params.TxDataNonZeroGasEIP2028 * 10000000)
+)
 
 func InitializeL1PricingState(sto *storage.Storage, initialRewardsRecipient common.Address, initialL1BaseFee *big.Int) error {
 	bptStorage := sto.OpenCachedSubStorage(BatchPosterTableKey)
@@ -184,7 +186,6 @@ func (ps *L1PricingState) FundsDueForRewards() (*big.Int, error) {
 
 func (ps *L1PricingState) SetFundsDueForRewards(amt *big.Int) error {
 	return ps.fundsDueForRewards.SetSaturatingWithWarning(amt, "L1 pricer funds due for rewards")
-
 }
 
 func (ps *L1PricingState) UnitsSinceUpdate() (uint64, error) {
@@ -499,7 +500,6 @@ func (ps *L1PricingState) UpdateForBatchPosterSpending(
 }
 
 func (ps *L1PricingState) getPosterUnitsWithoutCache(tx *types.Transaction, posterAddr common.Address, brotliCompressionLevel uint64) uint64 {
-
 	if posterAddr != BatchPosterAddress {
 		return 0
 	}
@@ -533,16 +533,20 @@ func (ps *L1PricingState) GetPosterInfo(tx *types.Transaction, poster common.Add
 }
 
 // We don't have the full tx in gas estimation, so we assume it might be a bit bigger in practice.
-const estimationPaddingUnits = 16 * params.TxDataNonZeroGasEIP2028
-const estimationPaddingBasisPoints = 100
+const (
+	estimationPaddingUnits       = 16 * params.TxDataNonZeroGasEIP2028
+	estimationPaddingBasisPoints = 100
+)
 
-var randomNonce = binary.BigEndian.Uint64(crypto.Keccak256([]byte("Nonce"))[:8])
-var randomGasTipCap = new(big.Int).SetBytes(crypto.Keccak256([]byte("GasTipCap"))[:4])
-var randomGasFeeCap = new(big.Int).SetBytes(crypto.Keccak256([]byte("GasFeeCap"))[:4])
-var RandomGas = uint64(binary.BigEndian.Uint32(crypto.Keccak256([]byte("Gas"))[:4]))
-var randV = arbmath.BigMulByUint(params.ArbitrumOneChainConfig().ChainID, 3)
-var randR = crypto.Keccak256Hash([]byte("R")).Big()
-var randS = crypto.Keccak256Hash([]byte("S")).Big()
+var (
+	randomNonce     = binary.BigEndian.Uint64(crypto.Keccak256([]byte("Nonce"))[:8])
+	randomGasTipCap = new(big.Int).SetBytes(crypto.Keccak256([]byte("GasTipCap"))[:4])
+	randomGasFeeCap = new(big.Int).SetBytes(crypto.Keccak256([]byte("GasFeeCap"))[:4])
+	RandomGas       = uint64(binary.BigEndian.Uint32(crypto.Keccak256([]byte("Gas"))[:4]))
+	randV           = arbmath.BigMulByUint(params.ArbitrumOneChainConfig().ChainID, 3)
+	randR           = crypto.Keccak256Hash([]byte("R")).Big()
+	randS           = crypto.Keccak256Hash([]byte("S")).Big()
+)
 
 // The returned tx will be invalid, likely for a number of reasons such as an invalid signature.
 // It's only used to check how large it is after brotli level 0 compression.

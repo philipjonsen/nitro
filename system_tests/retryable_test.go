@@ -94,7 +94,6 @@ func retryableSetup(t *testing.T, modifyNodeConfig ...func(*NodeBuilder)) (
 	builder.L2.TransferBalance(t, "Faucet", "Burn", discard, builder.L2Info)
 
 	teardown := func() {
-
 		// check the integrity of the RPC
 		blockNum, err := builder.L2.Client.BlockNumber(ctx)
 		Require(t, err, "failed to get L2 block number")

@@ -112,5 +112,4 @@ func TestDAS_SimpleExploreExploit(t *testing.T) {
 		checkMatch(expectedOrdering[3:6], si.nextReaders(), true)
 		checkMatch(expectedOrdering[6:], si.nextReaders(), true)
 	}
-
 }

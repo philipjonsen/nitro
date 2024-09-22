@@ -257,7 +257,6 @@ func TestRedisProduce(t *testing.T) {
 					}
 					consumers[i].StopAndWait()
 				}
-
 			}
 			time.Sleep(time.Second)
 			wantResponses := consume(ctx, t, consumers, gotMessages)

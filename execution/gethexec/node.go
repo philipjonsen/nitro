@@ -305,7 +305,6 @@ func CreateExecutionNode(
 		ParentChainReader: parentChainReader,
 		ClassicOutbox:     classicOutbox,
 	}, nil
-
 }
 
 func (n *ExecutionNode) MarkFeedStart(to arbutil.MessageIndex) {
@@ -384,24 +383,31 @@ func (n *ExecutionNode) StopAndWait() {
 func (n *ExecutionNode) DigestMessage(num arbutil.MessageIndex, msg *arbostypes.MessageWithMetadata, msgForPrefetch *arbostypes.MessageWithMetadata) (*execution.MessageResult, error) {
 	return n.ExecEngine.DigestMessage(num, msg, msgForPrefetch)
 }
+
 func (n *ExecutionNode) Reorg(count arbutil.MessageIndex, newMessages []arbostypes.MessageWithMetadataAndBlockHash, oldMessages []*arbostypes.MessageWithMetadata) ([]*execution.MessageResult, error) {
 	return n.ExecEngine.Reorg(count, newMessages, oldMessages)
 }
+
 func (n *ExecutionNode) HeadMessageNumber() (arbutil.MessageIndex, error) {
 	return n.ExecEngine.HeadMessageNumber()
 }
+
 func (n *ExecutionNode) HeadMessageNumberSync(t *testing.T) (arbutil.MessageIndex, error) {
 	return n.ExecEngine.HeadMessageNumberSync(t)
 }
+
 func (n *ExecutionNode) NextDelayedMessageNumber() (uint64, error) {
 	return n.ExecEngine.NextDelayedMessageNumber()
 }
+
 func (n *ExecutionNode) SequenceDelayedMessage(message *arbostypes.L1IncomingMessage, delayedSeqNum uint64) error {
 	return n.ExecEngine.SequenceDelayedMessage(message, delayedSeqNum)
 }
+
 func (n *ExecutionNode) ResultAtPos(pos arbutil.MessageIndex) (*execution.MessageResult, error) {
 	return n.ExecEngine.ResultAtPos(pos)
 }
+
 func (n *ExecutionNode) ArbOSVersionForMessageNumber(messageNum arbutil.MessageIndex) (uint64, error) {
 	return n.ExecEngine.ArbOSVersionForMessageNumber(messageNum)
 }
@@ -413,9 +419,11 @@ func (n *ExecutionNode) RecordBlockCreation(
 ) (*execution.RecordResult, error) {
 	return n.Recorder.RecordBlockCreation(ctx, pos, msg)
 }
+
 func (n *ExecutionNode) MarkValid(pos arbutil.MessageIndex, resultHash common.Hash) {
 	n.Recorder.MarkValid(pos, resultHash)
 }
+
 func (n *ExecutionNode) PrepareForRecord(ctx context.Context, start, end arbutil.MessageIndex) error {
 	return n.Recorder.PrepareForRecord(ctx, start, end)
 }

@@ -198,9 +198,11 @@ func (c *RpcClient) CallContext(ctx_in context.Context, result interface{}, meth
 			"method", method,
 			"logId", logId,
 			"err", err,
-			"result", limitedMarshal{limit, result},
+			"result",
+			limitedMarshal{limit, result},
 			"attempt", i,
-			"args", limitedArgumentsMarshal{limit, args},
+			"args",
+			limitedArgumentsMarshal{limit, args},
 		}
 		var dataErr rpc.DataError
 		if errors.As(err, &dataErr) {

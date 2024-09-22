@@ -86,5 +86,4 @@ func TestSimpleDASReaderAggregator(t *testing.T) { //nolint
 	Require(t, err)
 	err = server3.Shutdown()
 	Require(t, err)
-
 }

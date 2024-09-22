@@ -46,7 +46,6 @@ func NewSignatureVerifier(ctx context.Context, config DataAvailabilityConfig) (*
 		return nil, err
 	}
 	return NewSignatureVerifierWithSeqInboxCaller(seqInboxCaller, config.ExtraSignatureCheckingPublicKey)
-
 }
 
 func NewSignatureVerifierWithSeqInboxCaller(
@@ -89,11 +88,11 @@ func NewSignatureVerifierWithSeqInboxCaller(
 		addrVerifier:    addrVerifier,
 		extraBpVerifier: extraBpVerifier,
 	}, nil
-
 }
 
 func (v *SignatureVerifier) verify(
-	ctx context.Context, message []byte, sig []byte, extraFields ...uint64) error {
+	ctx context.Context, message []byte, sig []byte, extraFields ...uint64,
+) error {
 	if v.extraBpVerifier == nil && v.addrVerifier == nil {
 		return errors.New("no signature verification method configured")
 	}

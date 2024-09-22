@@ -718,7 +718,6 @@ func (l *trieLayout) startMigration() error {
 		return err
 	}
 	return nil
-
 }
 
 func (l *trieLayout) commitMigration() error {

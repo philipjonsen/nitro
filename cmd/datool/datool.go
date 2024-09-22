@@ -78,7 +78,6 @@ func startClient(args []string) error {
 
 	}
 	return fmt.Errorf("datool client '%s' not supported, valid arguments are 'rpc' and 'rest'", args[0])
-
 }
 
 // datool client rpc store

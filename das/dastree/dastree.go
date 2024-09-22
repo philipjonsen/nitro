@@ -13,9 +13,11 @@ import (
 	"github.com/offchainlabs/nitro/util/arbmath"
 )
 
-const BinSize = 64 * 1024 // 64 kB
-const NodeByte = byte(0xff)
-const LeafByte = byte(0xfe)
+const (
+	BinSize  = 64 * 1024 // 64 kB
+	NodeByte = byte(0xff)
+	LeafByte = byte(0xfe)
+)
 
 type bytes32 = common.Hash
 
@@ -135,7 +137,6 @@ func ValidHash(hash bytes32, preimage []byte) bool {
 //  4. Only the committee can produce trees unwrapped by this function
 //  5. When the replay binary calls this, the oracle function must be infallible.
 func Content(root bytes32, oracle func(bytes32) ([]byte, error)) ([]byte, error) {
-
 	unpeal := func(hash bytes32) (byte, []byte, error) {
 		data, err := oracle(hash)
 		if err != nil {

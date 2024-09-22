@@ -56,7 +56,6 @@ func run(dryRun bool, pass *analysis.Pass) (interface{}, error) {
 						Pos:     cl.Pos(),
 						Message: fmt.Sprintf("struct: %q initialized with: %v of total: %v fields", stName, len(cl.Elts), cnt),
 					})
-
 				}
 
 			}

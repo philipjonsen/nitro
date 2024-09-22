@@ -59,7 +59,8 @@ func NewTestS3StorageService(ctx context.Context, s3Config genericconf.S3Config)
 	return &S3StorageService{
 		bucket:     s3Config.Bucket,
 		uploader:   &mockS3Uploader{mockStorageService},
-		downloader: &mockS3Downloader{mockStorageService}}, nil
+		downloader: &mockS3Downloader{mockStorageService},
+	}, nil
 }
 
 func TestS3StorageService(t *testing.T) {

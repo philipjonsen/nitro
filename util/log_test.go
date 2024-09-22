@@ -12,6 +12,7 @@ import (
 func compareFunctions(f1, f2 func(msg string, ctx ...interface{})) bool {
 	return reflect.ValueOf(f1).Pointer() == reflect.ValueOf(f2).Pointer()
 }
+
 func TestSimple(t *testing.T) {
 	allErrHandler := NewEphemeralErrorHandler(2500*time.Millisecond, "", time.Second)
 	err := errors.New("sample error")

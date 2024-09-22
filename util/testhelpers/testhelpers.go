@@ -88,9 +88,11 @@ type LogHandler struct {
 func (h *LogHandler) Enabled(_ context.Context, level slog.Level) bool {
 	return h.terminalHandler.Enabled(context.Background(), level)
 }
+
 func (h *LogHandler) WithGroup(name string) slog.Handler {
 	return h.terminalHandler.WithGroup(name)
 }
+
 func (h *LogHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
 	return h.terminalHandler.WithAttrs(attrs)
 }

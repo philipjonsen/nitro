@@ -292,7 +292,6 @@ func (s *DASRPCServer) StartChunkedStore(ctx context.Context, timestamp, nChunks
 	return &StartChunkedStoreResult{
 		BatchId: hexutil.Uint64(id),
 	}, nil
-
 }
 
 func (s *DASRPCServer) SendChunk(ctx context.Context, batchId, chunkId hexutil.Uint64, message hexutil.Bytes, sig hexutil.Bytes) error {

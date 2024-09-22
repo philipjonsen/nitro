@@ -26,7 +26,6 @@ func InternalTxStartBlock(
 	header,
 	lastHeader *types.Header,
 ) *types.ArbitrumInternalTx {
-
 	l2BlockNum := header.Number.Uint64()
 	timePassed := header.Time - lastHeader.Time
 

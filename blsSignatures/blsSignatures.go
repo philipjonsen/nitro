@@ -152,7 +152,6 @@ func VerifyAggregatedSignatureSameMessage(sig Signature, message []byte, pubKeys
 }
 
 func VerifyAggregatedSignatureDifferentMessages(sig Signature, messages [][]byte, pubKeys []PublicKey) (bool, error) {
-
 	if len(messages) != len(pubKeys) {
 		return false, errors.New("len(messages) does not match (len(pub keys) in verification")
 	}

@@ -47,7 +47,6 @@ func NewRestfulDasServer(address string, port uint64, restServerTimeouts generic
 }
 
 func NewRestfulDasServerOnListener(listener net.Listener, restServerTimeouts genericconf.HTTPServerTimeoutConfig, daReader daprovider.DASReader, daHealthChecker DataAvailabilityServiceHealthChecker) (*RestfulDasServer, error) {
-
 	ret := &RestfulDasServer{
 		daReader:             daReader,
 		daHealthChecker:      daHealthChecker,
@@ -80,11 +79,13 @@ type RestfulDasServerResponse struct {
 
 var cacheControlKey = http.CanonicalHeaderKey("cache-control")
 
-const cacheControlValueDefault = "public, max-age=1"                                 // cache for up to 1 second (Used to reduce DOS possibility)
-const cacheControlValueForSuccessfulGetByHash = "public, max-age=2419200, immutable" // cache for up to 28 days
-const healthRequestPath = "/health"
-const expirationPolicyRequestPath = "/expiration-policy/"
-const getByHashRequestPath = "/get-by-hash/"
+const (
+	cacheControlValueDefault                = "public, max-age=1"                  // cache for up to 1 second (Used to reduce DOS possibility)
+	cacheControlValueForSuccessfulGetByHash = "public, max-age=2419200, immutable" // cache for up to 28 days
+	healthRequestPath                       = "/health"
+	expirationPolicyRequestPath             = "/expiration-policy/"
+	getByHashRequestPath                    = "/get-by-hash/"
+)
 
 func (rds *RestfulDasServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Header()[cacheControlKey] = []string{cacheControlValueDefault}

@@ -22,6 +22,7 @@ void handleReqWrap(usize api, u32 req_type, RustSlice *data, u64 *out_cost, GoSl
 }
 */
 import "C"
+
 import (
 	"runtime"
 	"sync"
@@ -33,8 +34,10 @@ import (
 	"github.com/offchainlabs/nitro/arbutil"
 )
 
-var apiObjects sync.Map
-var apiIds atomic.Uintptr // atomic and sequential
+var (
+	apiObjects sync.Map
+	apiIds     atomic.Uintptr // atomic and sequential
+)
 
 type NativeApi struct {
 	handler RequestHandler

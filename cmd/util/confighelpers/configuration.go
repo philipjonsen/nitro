@@ -150,7 +150,6 @@ func loadEnvironmentVariables(k *koanf.Koanf) error {
 				}
 				if strings.Contains(v, ",") {
 					return key, strings.Split(v, ",")
-
 				}
 			}
 
@@ -233,7 +232,7 @@ func BeginCommonParse(f *flag.FlagSet, args []string) (*koanf.Koanf, error) {
 		return nil, fmt.Errorf("unexpected parameter: %s", f.Arg(0))
 	}
 
-	var k = koanf.New(".")
+	k := koanf.New(".")
 
 	// Initial application of command line parameters and environment variables so other methods can be applied
 	if err := ApplyOverrides(f, k); err != nil {
@@ -267,7 +266,8 @@ func stringToSliceDurationHookFunc(sep string) mapstructure.DecodeHookFunc {
 	return func(
 		f reflect.Type,
 		t reflect.Type,
-		data interface{}) (interface{}, error) {
+		data interface{},
+	) (interface{}, error) {
 		if f.Kind() != reflect.String {
 			return data, nil
 		}

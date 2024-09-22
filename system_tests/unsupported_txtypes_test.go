@@ -54,6 +54,7 @@ func TestBlobAndInternalTxsReject(t *testing.T) {
 		t.Fatalf("did not receive expected error when submitting arbitrum internal transaction. Want: %v, Got: %v", types.ErrTxTypeNotSupported, err)
 	}
 }
+
 func TestBlobAndInternalTxsAsDelayedMsgReject(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()

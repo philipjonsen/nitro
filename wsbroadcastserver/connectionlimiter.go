@@ -13,9 +13,7 @@ import (
 	flag "github.com/spf13/pflag"
 )
 
-var (
-	clientsLimitedCounter = metrics.NewRegisteredCounter("arb/feed/clients/limited", nil)
-)
+var clientsLimitedCounter = metrics.NewRegisteredCounter("arb/feed/clients/limited", nil)
 
 type ConnectionLimiterConfig struct {
 	Enable                  bool          `koanf:"enable" reload:"hot"`

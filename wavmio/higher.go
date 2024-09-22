@@ -13,16 +13,22 @@ import (
 	"github.com/offchainlabs/nitro/arbutil"
 )
 
-const INITIAL_CAPACITY = 128
-const QUERY_SIZE = 32
+const (
+	INITIAL_CAPACITY = 128
+	QUERY_SIZE       = 32
+)
 
 // bytes32
-const IDX_LAST_BLOCKHASH = 0
-const IDX_SEND_ROOT = 1
+const (
+	IDX_LAST_BLOCKHASH = 0
+	IDX_SEND_ROOT      = 1
+)
 
 // u64
-const IDX_INBOX_POSITION = 0
-const IDX_POSITION_WITHIN_MESSAGE = 1
+const (
+	IDX_INBOX_POSITION          = 0
+	IDX_POSITION_WITHIN_MESSAGE = 1
+)
 
 func readBuffer(f func(uint32, unsafe.Pointer) uint32) []byte {
 	buf := make([]byte, 0, INITIAL_CAPACITY)

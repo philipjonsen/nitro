@@ -64,8 +64,10 @@ type ArbosState struct {
 	Burner                        burn.Burner
 }
 
-var ErrUninitializedArbOS = errors.New("ArbOS uninitialized")
-var ErrAlreadyInitialized = errors.New("ArbOS is already initialized")
+var (
+	ErrUninitializedArbOS = errors.New("ArbOS uninitialized")
+	ErrAlreadyInitialized = errors.New("ArbOS is already initialized")
+)
 
 func OpenArbosState(stateDB vm.StateDB, burner burn.Burner) (*ArbosState, error) {
 	backingStorage := storage.NewGeth(stateDB, burner)

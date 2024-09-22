@@ -33,10 +33,12 @@ type mockSpawner struct {
 	LaunchDelay time.Duration
 }
 
-var blockHashKey = common.HexToHash("0x11223344")
-var sendRootKey = common.HexToHash("0x55667788")
-var batchNumKey = common.HexToHash("0x99aabbcc")
-var posInBatchKey = common.HexToHash("0xddeeff")
+var (
+	blockHashKey  = common.HexToHash("0x11223344")
+	sendRootKey   = common.HexToHash("0x55667788")
+	batchNumKey   = common.HexToHash("0x99aabbcc")
+	posInBatchKey = common.HexToHash("0xddeeff")
+)
 
 func globalstateFromTestPreimages(preimages map[arbutil.PreimageType]map[common.Hash][]byte) validator.GoGlobalState {
 	keccakPreimages := preimages[arbutil.Keccak256PreimageType]

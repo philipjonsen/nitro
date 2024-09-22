@@ -15,11 +15,13 @@ import (
 func prepareTrue() bool  { return true }
 func prepareFalse() bool { return false }
 
-const test_attempts = 10
-const test_threads = 10
-const test_release_frac = 5
-const test_delay = time.Millisecond
-const test_redisKey_prefix = "__TEMP_SimpleRedisLockTest__"
+const (
+	test_attempts        = 10
+	test_threads         = 10
+	test_release_frac    = 5
+	test_delay           = time.Millisecond
+	test_redisKey_prefix = "__TEMP_SimpleRedisLockTest__"
+)
 
 func attemptLock(ctx context.Context, s *redislock.Simple, flag *atomic.Int32, wg *sync.WaitGroup) {
 	defer wg.Done()

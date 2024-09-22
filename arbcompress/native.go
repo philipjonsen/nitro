@@ -12,17 +12,22 @@ package arbcompress
 #include "arbitrator.h"
 */
 import "C"
+
 import (
 	"errors"
 	"fmt"
 )
 
-type u8 = C.uint8_t
-type u32 = C.uint32_t
-type usize = C.size_t
+type (
+	u8    = C.uint8_t
+	u32   = C.uint32_t
+	usize = C.size_t
+)
 
-type brotliBool = uint32
-type brotliBuffer = C.BrotliBuffer
+type (
+	brotliBool   = uint32
+	brotliBuffer = C.BrotliBuffer
+)
 
 const (
 	brotliFalse brotliBool = iota

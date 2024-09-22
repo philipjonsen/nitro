@@ -28,15 +28,17 @@ import (
 )
 
 // set by the precompile module, to avoid a package dependence cycle
-var ArbRetryableTxAddress common.Address
-var ArbSysAddress common.Address
-var InternalTxStartBlockMethodID [4]byte
-var InternalTxBatchPostingReportMethodID [4]byte
-var RedeemScheduledEventID common.Hash
-var L2ToL1TransactionEventID common.Hash
-var L2ToL1TxEventID common.Hash
-var EmitReedeemScheduledEvent func(*vm.EVM, uint64, uint64, [32]byte, [32]byte, common.Address, *big.Int, *big.Int) error
-var EmitTicketCreatedEvent func(*vm.EVM, [32]byte) error
+var (
+	ArbRetryableTxAddress                common.Address
+	ArbSysAddress                        common.Address
+	InternalTxStartBlockMethodID         [4]byte
+	InternalTxBatchPostingReportMethodID [4]byte
+	RedeemScheduledEventID               common.Hash
+	L2ToL1TransactionEventID             common.Hash
+	L2ToL1TxEventID                      common.Hash
+	EmitReedeemScheduledEvent            func(*vm.EVM, uint64, uint64, [32]byte, [32]byte, common.Address, *big.Int, *big.Int) error
+	EmitTicketCreatedEvent               func(*vm.EVM, [32]byte) error
+)
 
 // A helper struct that implements String() by marshalling to JSON.
 // This is useful for logging because it's lazy, so if the log level is too high to print the transaction,
@@ -169,7 +171,6 @@ func ProduceBlockAdvanced(
 	sequencingHooks *SequencingHooks,
 	isMsgForPrefetch bool,
 ) (*types.Block, types.Receipts, error) {
-
 	state, err := arbosState.OpenSystemArbosState(statedb, nil, true)
 	if err != nil {
 		return nil, nil, err

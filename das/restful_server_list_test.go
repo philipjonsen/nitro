@@ -132,15 +132,13 @@ func (h *stringHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	_, _ = w.Write([]byte(h.contents))
 }
 
-type erroringHandler struct {
-}
+type erroringHandler struct{}
 
 func (h *erroringHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(404)
 }
 
-type connectionClosingHandler struct {
-}
+type connectionClosingHandler struct{}
 
 func (h *connectionClosingHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	panic("close connection")

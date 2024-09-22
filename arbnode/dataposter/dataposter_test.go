@@ -321,7 +321,6 @@ func TestFeeAndTipCaps_EnoughBalance_NoBacklog_NoUnconfirmed_BlobTx(t *testing.T
 			t.Fatalf("feeAndTipCaps didn't return expected tip cap. Was: %d, expected: %d", expectedTipCap, newTipCap)
 		}
 	*/
-
 }
 
 func TestFeeAndTipCaps_RBF_RisingBlobFee_FallingBaseFee(t *testing.T) {
@@ -443,5 +442,4 @@ func TestFeeAndTipCaps_RBF_RisingBlobFee_FallingBaseFee(t *testing.T) {
 	if arbmath.BigEquals(expectedTipCap, newTipCap) {
 		t.Fatalf("feeAndTipCaps didn't return expected tip cap. Was: %d, expected NOT: %d", expectedTipCap, newTipCap)
 	}
-
 }

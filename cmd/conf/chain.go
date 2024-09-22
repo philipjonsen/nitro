@@ -81,7 +81,6 @@ func L2ConfigAddOptions(prefix string, f *flag.FlagSet) {
 	genericconf.WalletConfigAddOptions(prefix+".dev-wallet", f, "")
 	f.String(prefix+".info-ipfs-url", L2ConfigDefault.InfoIpfsUrl, "url to download chain info file")
 	f.String(prefix+".info-ipfs-download-path", L2ConfigDefault.InfoIpfsDownloadPath, "path to save temp downloaded file")
-
 }
 
 func (c *L2Config) ResolveDirectoryNames(chain string) {

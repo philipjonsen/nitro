@@ -387,7 +387,6 @@ func (t *InboxTracker) GetDelayedMessageAccumulatorAndParentChainBlockNumber(ctx
 	}
 
 	return msg, acc, binary.BigEndian.Uint64(data), nil
-
 }
 
 func (t *InboxTracker) GetDelayedMessage(ctx context.Context, seqNum uint64) (*arbostypes.L1IncomingMessage, error) {

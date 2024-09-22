@@ -27,13 +27,17 @@ import (
 	flag "github.com/spf13/pflag"
 )
 
-var sequencerInboxABI *abi.ABI
-var BatchDeliveredID common.Hash
-var addSequencerL2BatchFromOriginCallABI abi.Method
-var sequencerBatchDataABI abi.Event
+var (
+	sequencerInboxABI                    *abi.ABI
+	BatchDeliveredID                     common.Hash
+	addSequencerL2BatchFromOriginCallABI abi.Method
+	sequencerBatchDataABI                abi.Event
+)
 
-const sequencerBatchDataEvent = "SequencerBatchData"
-const sequencerBatchDeliveredEvent = "SequencerBatchDelivered"
+const (
+	sequencerBatchDataEvent      = "SequencerBatchData"
+	sequencerBatchDeliveredEvent = "SequencerBatchDelivered"
+)
 
 // TODO: can we use the generated ABI for BatchDataLocation enum?
 type batchDataLocation uint8
@@ -244,7 +248,8 @@ func FindDASDataFromLog(
 	deliveredEvent *bridgegen.SequencerInboxSequencerBatchDelivered,
 	inboxAddr common.Address,
 	l1Client arbutil.L1Interface,
-	batchDeliveredLog types.Log) ([]byte, error) {
+	batchDeliveredLog types.Log,
+) ([]byte, error) {
 	data := []byte{}
 	if deliveredEvent.DataLocation == uint8(batchDataSeparateEvent) {
 		query := ethereum.FilterQuery{
@@ -415,7 +420,8 @@ func NewSyncingFallbackStorageService(ctx context.Context,
 	backupHealthChecker DataAvailabilityServiceHealthChecker,
 	l1Reader *headerreader.HeaderReader,
 	inboxAddr common.Address,
-	syncConf *SyncToStorageConfig) (*SyncingFallbackStorageService, error) {
+	syncConf *SyncToStorageConfig,
+) (*SyncingFallbackStorageService, error) {
 	syncService, err := newl1SyncService(syncConf, primary, backup, l1Reader, inboxAddr)
 	if err != nil {
 		return nil, err

@@ -990,7 +990,6 @@ func (v *BlockValidator) InitAssumeValid(globalState validator.GoGlobalState) er
 }
 
 func (v *BlockValidator) UpdateLatestStaked(count arbutil.MessageIndex, globalState validator.GoGlobalState) {
-
 	if count <= v.validated() {
 		return
 	}

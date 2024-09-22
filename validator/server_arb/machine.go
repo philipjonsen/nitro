@@ -10,6 +10,7 @@ package server_arb
 ResolvedPreimage preimageResolverC(size_t context, uint8_t preimageType, const uint8_t* hash);
 */
 import "C"
+
 import (
 	"context"
 	"errors"
@@ -27,11 +28,13 @@ import (
 	"github.com/offchainlabs/nitro/validator"
 )
 
-type u8 = C.uint8_t
-type u16 = C.uint16_t
-type u32 = C.uint32_t
-type u64 = C.uint64_t
-type usize = C.size_t
+type (
+	u8    = C.uint8_t
+	u16   = C.uint16_t
+	u32   = C.uint32_t
+	u64   = C.uint64_t
+	usize = C.size_t
+)
 
 type MachineInterface interface {
 	CloneMachineInterface() MachineInterface
@@ -58,8 +61,10 @@ type ArbitratorMachine struct {
 // Assert that ArbitratorMachine implements MachineInterface
 var _ MachineInterface = (*ArbitratorMachine)(nil)
 
-var preimageResolvers containers.SyncMap[int64, GoPreimageResolver]
-var lastPreimageResolverId atomic.Int64 // atomic
+var (
+	preimageResolvers      containers.SyncMap[int64, GoPreimageResolver]
+	lastPreimageResolverId atomic.Int64 // atomic
+)
 
 // Any future calls to this machine will result in a panic
 func (m *ArbitratorMachine) Destroy() {

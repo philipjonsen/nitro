@@ -43,20 +43,24 @@ type Program struct {
 
 type uint24 = am.Uint24
 
-var paramsKey = []byte{0}
-var programDataKey = []byte{1}
-var moduleHashesKey = []byte{2}
-var dataPricerKey = []byte{3}
-var cacheManagersKey = []byte{4}
+var (
+	paramsKey        = []byte{0}
+	programDataKey   = []byte{1}
+	moduleHashesKey  = []byte{2}
+	dataPricerKey    = []byte{3}
+	cacheManagersKey = []byte{4}
+)
 
 var ErrProgramActivation = errors.New("program activation failed")
 
-var ProgramNotWasmError func() error
-var ProgramNotActivatedError func() error
-var ProgramNeedsUpgradeError func(version, stylusVersion uint16) error
-var ProgramExpiredError func(age uint64) error
-var ProgramUpToDateError func() error
-var ProgramKeepaliveTooSoon func(age uint64) error
+var (
+	ProgramNotWasmError      func() error
+	ProgramNotActivatedError func() error
+	ProgramNeedsUpgradeError func(version, stylusVersion uint16) error
+	ProgramExpiredError      func(age uint64) error
+	ProgramUpToDateError     func() error
+	ProgramKeepaliveTooSoon  func(age uint64) error
+)
 
 func Initialize(sto *storage.Storage) {
 	initStylusParams(sto.OpenSubStorage(paramsKey))

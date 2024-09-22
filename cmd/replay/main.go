@@ -103,8 +103,7 @@ func (i WavmInbox) ReadDelayedInbox(seqNum uint64) (*arbostypes.L1IncomingMessag
 	})
 }
 
-type PreimageDASReader struct {
-}
+type PreimageDASReader struct{}
 
 func (dasReader *PreimageDASReader) GetByHash(ctx context.Context, hash common.Hash) ([]byte, error) {
 	oracle := func(hash common.Hash) ([]byte, error) {
@@ -125,8 +124,7 @@ func (dasReader *PreimageDASReader) ExpirationPolicy(ctx context.Context) (dapro
 	return daprovider.DiscardImmediately, nil
 }
 
-type BlobPreimageReader struct {
-}
+type BlobPreimageReader struct{}
 
 func (r *BlobPreimageReader) GetBlobs(
 	ctx context.Context,
@@ -223,7 +221,7 @@ func main() {
 			dasKeysetFetcher = &PreimageDASReader{}
 		}
 		backend := WavmInbox{}
-		var keysetValidationMode = daprovider.KeysetPanicIfInvalid
+		keysetValidationMode := daprovider.KeysetPanicIfInvalid
 		if backend.GetPositionWithinMessage() > 0 {
 			keysetValidationMode = daprovider.KeysetDontValidate
 		}

@@ -290,7 +290,6 @@ func determineFilePath(baseDir string, lookup *Key) (string, error) {
 			height,
 		),
 		)
-
 	}
 	key = append(key, hashesFileName)
 	return filepath.Join(baseDir, filepath.Join(key...)), nil

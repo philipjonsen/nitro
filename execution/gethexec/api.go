@@ -96,7 +96,6 @@ func (api *ArbDebugAPI) evenlySpaceBlocks(start, end rpc.BlockNumber) (uint64, u
 }
 
 func (api *ArbDebugAPI) PricingModel(ctx context.Context, start, end rpc.BlockNumber) (PricingModelHistory, error) {
-
 	first, step, last, blocks, err := api.evenlySpaceBlocks(start, end)
 	if err != nil {
 		return PricingModelHistory{}, err
@@ -160,7 +159,6 @@ func (api *ArbDebugAPI) PricingModel(ctx context.Context, start, end rpc.BlockNu
 			l1AmortizedCostCapBips, _ := l1Pricing.AmortizedCostCapBips()
 			l1PerUnitReward, _ := l1Pricing.PerUnitReward()
 			l1PayRewardsTo, err := l1Pricing.PayRewardsTo()
-
 			if err != nil {
 				return history, err
 			}
@@ -221,7 +219,6 @@ type TimeoutQueue struct {
 }
 
 func (api *ArbDebugAPI) TimeoutQueue(ctx context.Context, blockNum rpc.BlockNumber) (TimeoutQueue, error) {
-
 	blockNum, _ = api.blockchain.ClipToPostNitroGenesis(blockNum)
 
 	queue := TimeoutQueue{
@@ -238,7 +235,6 @@ func (api *ArbDebugAPI) TimeoutQueue(ctx context.Context, blockNum rpc.BlockNumb
 	}
 
 	closure := func(index uint64, ticket common.Hash) (bool, error) {
-
 		// we don't care if the retryable has expired
 		retryable, err := state.RetryableState().OpenRetryable(ticket, 0)
 		if err != nil {

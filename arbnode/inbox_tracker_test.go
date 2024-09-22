@@ -54,5 +54,4 @@ func TestDeleteBatchMetadata(t *testing.T) {
 			Fail(t, "value removed from cache: ", i)
 		}
 	}
-
 }

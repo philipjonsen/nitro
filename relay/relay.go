@@ -43,7 +43,6 @@ func (q *MessageQueue) AddBroadcastMessages(feedMessages []*m.BroadcastFeedMessa
 }
 
 func NewRelay(config *Config, feedErrChan chan error) (*Relay, error) {
-
 	q := MessageQueue{make(chan m.BroadcastFeedMessage, config.Queue)}
 
 	confirmedSequenceNumberListener := make(chan arbutil.MessageIndex, config.Queue)

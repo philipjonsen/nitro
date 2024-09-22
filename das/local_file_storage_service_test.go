@@ -102,7 +102,6 @@ func TestMigrationNoExpiry(t *testing.T) {
 	// Can still iterate by timestamp even if expiry disabled
 	// #nosec G115
 	countTimestampEntries(t, &s.layout, time.Unix(int64(now+11), 0), 4)
-
 }
 
 func TestMigrationExpiry(t *testing.T) {
